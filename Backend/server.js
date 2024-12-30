@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/api/user", userRoutes);
-app.use("api/post",postRoutes);
+app.use("/api/post",postRoutes);
 
 //DB connect
 connectDB();

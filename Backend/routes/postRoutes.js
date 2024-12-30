@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const requireLogin = require("../middlewares/requireLogin");
+const requireLogin = require("../middlewares/auth");
 const postController = require("../controllers/postController");
+
+router.get("/", (req, res) => {
+    res.send("Welcome to instagram POST");
+});
 
 // Routes
 router.get("/allposts", requireLogin, postController.getAllPosts);

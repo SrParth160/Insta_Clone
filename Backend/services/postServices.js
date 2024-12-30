@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const POST = mongoose.model("POST");
+const POST = require("../models/postModel")
 
 exports.getAllPosts = () => {
     return POST.find()
