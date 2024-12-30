@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const USER = mongoose.model("USER");
+const USER = require("../models/userModel");
+
 
 exports.findUserByEmailOrUserName = async (email, userName) => {
     return USER.findOne({ $or: [{ email }, { userName }] });

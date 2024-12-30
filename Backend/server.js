@@ -4,6 +4,12 @@ const express = require("express");
 const app = express()
 const { connectDB } = require("./db/dbConnect");
 const userRoutes = require("./routes/userRoutes");
+const bodyParser = require('body-parser')
+const PORT = process.env.PORT || 6000;
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use("/api/user", userRoutes);
 
@@ -11,6 +17,6 @@ app.use("/api/user", userRoutes);
 connectDB();
 
 //server
-http.createServer(app).listen(process.env.PORT, () => {
-  console.log("server started scucess on port "+ process.env.PORT);
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });

@@ -9,17 +9,24 @@ const userSchema = new mongoose.Schema({
     userName: {
         type: String,
         required: true,
+        unique: true,
     },
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     password: {
         type: String,
         required: true,
     },
-    photo: {
+    bio: {
         type: String,
+        default: "",
+    },
+    profilePhoto: {
+        type: String,
+        default: "defaultProfilePhotoUrl",
     },
     followers: [{ type: ObjectId, ref: "USER" }],
     following: [{ type: ObjectId, ref: "USER" }],
@@ -30,4 +37,8 @@ const userSchema = new mongoose.Schema({
     },
 });
 
-mongoose.model("USER", userSchema);
+const USER = mongoose.model("USER", userSchema);                               
+
+module.exports = USER
+
+
