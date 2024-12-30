@@ -9,24 +9,17 @@ const userSchema = new mongoose.Schema({
     userName: {
         type: String,
         required: true,
-        unique: true,
     },
     email: {
         type: String,
         required: true,
-        unique: true,
     },
     password: {
         type: String,
         required: true,
     },
-    bio: {
+    photo: {
         type: String,
-        default: "",
-    },
-    profilePhoto: {
-        type: String,
-        default: "defaultProfilePhotoUrl",
     },
     followers: [{ type: ObjectId, ref: "USER" }],
     following: [{ type: ObjectId, ref: "USER" }],
