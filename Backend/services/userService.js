@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const USER = require("../models/userModel");
-const Jwt_secret = require("../middlewares/auth")
+const JWT_SECRET = require("../middlewares/auth")
 
 exports.findUserByEmailOrUserName = async (email, userName) => {
     return USER.findOne({ $or: [{ email }, { userName }] });
@@ -26,5 +26,5 @@ exports.createUser = async (userData) => {
 };
 
 exports.generateToken = (userId) => {
-    return jwt.sign({ _id: userId }, Jwt_secret);
+    return jwt.sign({ _id: userId }, JWT_SECRET);
 };
