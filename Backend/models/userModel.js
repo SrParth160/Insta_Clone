@@ -20,21 +20,21 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    bio: {
-        type: String,
-        default: "",
-    },
-    profilePhoto: {
-        type: String,
-        default: "defaultProfilePhotoUrl",
-    },
-    followers: [{ type: ObjectId, ref: "USER" }],
-    following: [{ type: ObjectId, ref: "USER" }],
-    posts: [{ type: ObjectId, ref: "POST" }],
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
+    // bio: {
+    //     type: String,
+    //     default: "",
+    // },
+    // profilePhoto: {
+    //     type: String,
+    //     default: "defaultProfilePhotoUrl",
+    // },
+    // followers: [{ type: ObjectId, ref: "USER" }],
+    // following: [{ type: ObjectId, ref: "USER" }],
+    // posts: [{ type: ObjectId, ref: "POST" }],
+    // createdAt: {
+    //     type: Date,
+    //     default: Date.now,
+    // },
 });
 
 const USER = mongoose.model("USER", userSchema);                               

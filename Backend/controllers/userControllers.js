@@ -3,7 +3,7 @@ const userService = require("../services/userService");
 exports.signup = async (req, res) => {
     const { name, userName, email, password } = req.body;
     if (!name || !email || !userName || !password) {
-        return res.status(422).json({ error: "Please add all the fields" });
+        return res.status(422).json({ error: "Please add all the fields",name,email,userName,password });
     }
 
     try {
