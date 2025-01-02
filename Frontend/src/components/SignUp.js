@@ -1,8 +1,25 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import logo from "../img/logo.png";
 import "./SignUp.css";
+// import {Link} from "react-router-dom";
+
+
 
 export default function SignUp() {
+  const [name, setName] = useState("")
+const [email, setEmail] = useState("")
+const [username, setUserName] = useState("")
+const [password, setPassword] = useState("") 
+
+const postData=()=>{
+
+  
+
+  console.log({
+    name,email,username,password
+  })
+}
+
   return (
     <div className="signup">
       <div className="signup-container">
@@ -12,13 +29,17 @@ export default function SignUp() {
           <input
             type="email"
             name="email"
+            value={email}
             placeholder="Email"
+            onChange={(e)=>{setEmail(e.target.value)}}
             className="signup-input"
             required
           />
           <input
             type="text"
             name="fullName"
+            value={name}
+            onChange={(e)=>{setName(e.target.value)}}
             placeholder="Full Name"
             className="signup-input"
             required
@@ -26,6 +47,8 @@ export default function SignUp() {
           <input
             type="text"
             name="username"
+            value={username}
+            onChange={(e)=>{setUserName(e.target.value)}}
             placeholder="Username"
             className="signup-input"
             required
@@ -33,11 +56,13 @@ export default function SignUp() {
           <input
             type="password"
             name="password"
+            value={password}
+            onChange={(e)=>{setPassword(e.target.value)}}
             placeholder="Password"
             className="signup-input"
             required
           />
-          <button type="submit" className="signup-button">Sign Up</button>
+          <input value={"SignUp"} type="submit"  className="signup-button" onClick={()=>{postData()}}/>
         </form>
         <p className="signup-terms">
           By signing up, you agree to our <span>Terms</span>, <span>Privacy Policy</span> and <span>Cookies Policy</span>.

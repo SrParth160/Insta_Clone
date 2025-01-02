@@ -5,7 +5,13 @@ const app = express()
 const { connectDB } = require("./db/dbConnect");
 const userRoutes = require("./routes/userRoutes");
 const postRoutes = require("./routes/postRoutes");
+const cors = require('cors');
   
+
+app.use(cors({
+    origin: ['http://localhost:3000'].filter(Boolean),
+    credentials: true
+  }));
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 6000;
 
