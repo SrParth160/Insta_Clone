@@ -1,21 +1,35 @@
 import React, { useEffect, useState } from "react";
 import logo from "../img/logo.png";
+import { useForm } from "react-hook-form";
 import "./SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function SignUp() {
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [userName, setuserName] = useState("");
   const [password, setPassword] = useState("");
 
   // Toast functions
-  const notifyERR = (message) => toast.error(message)
-  const notifySUC = (message) => toast.success(message)
+  const notifyERR = (message) => toast.error(message);
+  const notifySUC = (message) => toast.success(message);
+
+  //email and password regex
+  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const passRegex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 
   const postData = () => {
+    if (!emailRegex.test(email)) {
+      notifyERR("Invalid email format");
+      return;
+    }
+    else if (!passRegex.test(password)) {
+      notifyERR("Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.");
+      return;
+    }
+
     fetch("http://localhost:5000/api/user/signup", {
       method: "post",
       headers: {
@@ -34,7 +48,7 @@ export default function SignUp() {
           notifyERR(data.error);
         } else {
           notifySUC(data.message);
-          Navigate("/login")
+          Navigate("/login");
         }
         console.log(data);
       });
@@ -47,10 +61,10 @@ export default function SignUp() {
         <h2 className="signup-header">
           Sign up to see photos and videos from your friends.
         </h2>
-        <div className="signup-form">
+        <div className="signup-form form">
           <input
-            id="email"
             type="email"
+            id="email"
             name="email"
             value={email}
             placeholder="Email"
