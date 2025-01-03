@@ -5,14 +5,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function SignUp() {
+  const Navigate = useNavigate()
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [userName, setuserName] = useState("");
   const [password, setPassword] = useState("");
 
   // Toast functions
-  const notifyB = (msg) => toast.success(msg)
-  const notifyA = (msg) => toast.error(msg)
+  const notifyERR = (message) => toast.error(message)
+  const notifySUC = (message) => toast.success(message)
 
   const postData = () => {
     fetch("http://localhost:5000/api/user/signup", {
@@ -30,9 +31,10 @@ export default function SignUp() {
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
-          notifyA(data.error);
+          notifyERR(data.error);
         } else {
-          notifyB(data.msg);
+          notifySUC(data.message);
+          Navigate("/login")
         }
         console.log(data);
       });
