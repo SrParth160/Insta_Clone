@@ -1,50 +1,60 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from "react";
 import logo from "../img/logo.png";
 import "./SignUp.css";
-import {Link, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
-
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function SignUp() {
-const [name, setName] = useState("")
-const [email, setEmail] = useState("")
-const [userName, setuserName] = useState("")
-const [password, setPassword] = useState("")
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [userName, setuserName] = useState("");
+  const [password, setPassword] = useState("");
 
   // Toast functions
-  const notifyA = (msg) => toast.error(msg)
   const notifyB = (msg) => toast.success(msg)
+  const notifyA = (msg) => toast.error(msg)
 
-const postData = () =>{
-
-  fetch("http://localhost:5000/api/user/signup",{
-    method:"post",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({
-      name:name,
-      email:email,
-      userName:userName,
-      password:password
+  const postData = () => {
+    fetch("http://localhost:5000/api/user/signup", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        userName: userName,
+        password: password,
+      }),
     })
-  }).then(res=>res.json()).then(data=>{console.log(data);
-  })
-}
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          notifyA(data.error);
+        } else {
+          notifyB(data.msg);
+        }
+        console.log(data);
+      });
+  };
 
   return (
     <div className="signup">
       <div className="signup-container">
         <img src={logo} alt="Logo" className="signup-logo" />
-        <h2 className="signup-header">Sign up to see photos and videos from your friends.</h2>
+        <h2 className="signup-header">
+          Sign up to see photos and videos from your friends.
+        </h2>
         <div className="signup-form">
           <input
-          id="email"
+            id="email"
             type="email"
             name="email"
             value={email}
             placeholder="Email"
-            onChange={(e)=>{setEmail(e.target.value)}}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             className="signup-input"
             required
           />
@@ -52,7 +62,9 @@ const postData = () =>{
             type="text"
             name="name"
             value={name}
-            onChange={(e)=>{setName(e.target.value)}}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
             placeholder="Full Name"
             className="signup-input"
             required
@@ -61,7 +73,9 @@ const postData = () =>{
             type="text"
             name="userName"
             value={userName}
-            onChange={(e)=>{setuserName(e.target.value)}}
+            onChange={(e) => {
+              setuserName(e.target.value);
+            }}
             placeholder="Username"
             className="signup-input"
             required
@@ -70,19 +84,33 @@ const postData = () =>{
             type="password"
             name="password"
             value={password}
-            onChange={(e)=>{setPassword(e.target.value)}}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
             placeholder="Password"
             className="signup-input"
             required
           />
-          <input type="submit" id="submit-btn" value={"Sign Up"} className="signup-button" onClick={()=>{ postData()}}/>
+          <input
+            type="submit"
+            id="submit-btn"
+            value={"Sign Up"}
+            className="signup-button"
+            onClick={() => {
+              postData();
+            }}
+          />
         </div>
         <p className="signup-terms">
-          By signing up, you agree to our <span>Terms</span>, <span>Privacy Policy</span> and <span>Cookies Policy</span>.
+          By signing up, you agree to our <span>Terms</span>,{" "}
+          <span>Privacy Policy</span> and <span>Cookies Policy</span>.
         </p>
       </div>
       <div className="login-redirect">
-        Have an account? <Link to="/login" className="login-link">Log in</Link>
+        Have an account?{" "}
+        <Link to="/login" className="login-link">
+          Log in
+        </Link>
       </div>
     </div>
   );

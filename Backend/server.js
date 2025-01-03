@@ -5,6 +5,7 @@ const app = express()
 const { connectDB } = require("./db/dbConnect");
 const userRoutes = require("./routes/userRoutes");
 const postRoutes = require("./routes/postRoutes");
+
 const cors = require('cors');
   
 
