@@ -17,18 +17,18 @@ export default function SignUp() {
   const notifySUC = (message) => toast.success(message);
 
   //email and password regex
-  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  const passRegex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+  // const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  // const passRegex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 
   const postData = () => {
-    if (!emailRegex.test(email)) {
-      notifyERR("Invalid email format");
-      return;
-    }
-    else if (!passRegex.test(password)) {
-      notifyERR("Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.");
-      return;
-    }
+    // if (!emailRegex.test(email)) {
+    //   notifyERR("Invalid email format");
+    //   return;
+    // }
+    // else if (!passRegex.test(password)) {
+    //   notifyERR("Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.");
+    //   return;
+    // }
 
     fetch("http://localhost:5000/api/user/signup", {
       method: "post",

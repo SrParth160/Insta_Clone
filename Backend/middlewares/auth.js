@@ -3,12 +3,22 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const USER = mongoose.model("USER");;
+const JWT_SECRET = "mysecretkey";
 
-exports.generateToken = (userId) => {
-    return jwt.sign({ _id: userId }, JWT_SECRET, { expiresIn: "7d" });
+// exports.generateToken = (userId) => {
+//     return jwt.sign({ _id: userId }, JWT_SECRET, { expiresIn: "7d" });
+// };
+
+module.exports.createToken = (data) => {
+    console.log(data);
+    
+  const token = jwt.sign({ data }, JWT_SECRET);
+  return token;
 };
-// Use environment variable for JWT secret
-const JWT_SECRET = process.env.JWT_SECRET;
+
+module.exports.verifyToken = (login_token) => {
+return jwt.verify(login_token, JWT_SECRET);
+};
 
 module.exports = async (req, res, next) => {
     try {
