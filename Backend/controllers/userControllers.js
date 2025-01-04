@@ -76,7 +76,7 @@ exports.login = async (req, res) => {
 
   if (!findUser) {
     res.status(500).json({
-      message: "User not found",
+      error: "User not found",
     });
   } else {
     const pass = await bcrypt.compare(password, findUser.password);
@@ -96,7 +96,7 @@ exports.login = async (req, res) => {
       });
     } else {
       res.status(500).json({
-        message: "Enter valid password",
+        error: "Enter valid password",
       });
     }
   }

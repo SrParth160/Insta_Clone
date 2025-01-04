@@ -45,7 +45,7 @@ export default function Login() {
             notifyERR(data.error);
           } else {
             notifySUC(data.message);
-            Navigate("/login");
+            Navigate("/Home");
           }
           console.log(data);
         });
