@@ -2,7 +2,6 @@ const userService = require("../services/userService"); // Ensure this file has 
 const jwt = require("jsonwebtoken");
 var cookieParser = require("cookie-parser");
 const { verifyToken, createToken } = require("../middlewares/auth");
-const JWT_SECRET = require("../middlewares/auth");
 const USER = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const JWT_ = "mysecretkey";
