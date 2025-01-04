@@ -1,68 +1,43 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 
-const Home = () => {
-  const [posts, setPosts] = useState([]);
+export default function Home(){
+return <div className="home">
 
-  useEffect(() => {
-    // Fetch posts from backend (Replace with actual API call)
-    setPosts([
-      {
-        id: 1,
-        user: "john_doe",
-        userProfile: "https://via.placeholder.com/40",
-        image: "https://via.placeholder.com/500",
-        caption: "Beautiful sunset! 🌅 #nature",
-        likes: 120,
-        comments: [{ user: "alice", text: "Wow, amazing view!" }],
-      },
-      {
-        id: 2,
-        user: "jane_smith",
-        userProfile: "https://via.placeholder.com/40",
-        image: "https://via.placeholder.com/500",
-        caption: "My new pet! 🐶",
-        likes: 250,
-        comments: [{ user: "bob", text: "So cute! 🥰" }],
-      },
-    ]);
-  }, []);
+{/* {card} */}
 
-  return (
-    <div className="home">
-      {posts.map((post) => (
-        <div key={post.id} className="post-card">
-          {/* Post Header */}
-          <div className="post-header">
-            <img src={post.userProfile} alt="profile" className="profile-pic" />
-            <h4>{post.user}</h4>
-          </div>
+<div className="card">
 
-          {/* Post Image */}
-          <img src={post.image} alt="Post" className="post-image" />
+{/* {card Header} */}
 
-          {/* Post Actions */}
-          <div className="post-actions">
-            <span>❤️ {post.likes} Likes</span>
-          </div>
-
-          {/* Caption */}
-          <p className="post-caption">
-            <strong>{post.user}</strong> {post.caption}
-          </p>
-
-          {/* Comments */}
-          <div className="post-comments">
-            {post.comments.map((comment, index) => (
-              <p key={index}>
-                <strong>{comment.user}</strong> {comment.text}
-              </p>
-            ))}
-          </div>
-        </div>
-      ))}
+<div className="card-header">
+    <div className="card-pic">
+        <img src="https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
     </div>
-  );
-};
+    <h5>Ramesh</h5>
 
-export default Home;
+</div>
+{/* {card image} */}
+<div className="card-image">
+    <img src="https://images.unsplash.com/photo-1724684410691-8530c765b6dc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+</div>
+{/* {card content} */}
+<div className="card-content">
+<span class="material-symbols-outlined">
+favorite
+</span>
+<p>1 like</p>
+<p>amazing</p>
+</div>
+{/* {add comment} */}
+<div className="add-comment">
+{/* <span class="material-symbols-outlined"></span> */}
+
+<input type="text" placeholder="Add Comment" />
+<button className="comment">post</button>
+</div>
+</div>
+</div>
+
+}
+
