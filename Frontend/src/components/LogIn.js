@@ -45,6 +45,8 @@ export default function Login() {
             notifyERR(data.error);
           } else {
             notifySUC(data.message);
+            console.log(data.token);
+            localStorage.setItem("jwt", data.token);
             Navigate("/Home");
           }
           console.log(data);

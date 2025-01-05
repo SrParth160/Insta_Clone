@@ -33,8 +33,6 @@ export default function CreatePost() {
             notifyERR(data.error);
         } else {
             notifySUC("Post created successfully");
-            console.log(data.token);
-            localStorage.setItem("jwt", data.token);
         }
     })
     .catch((err) => {
