@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import logo from "../img/logo.png";
 import "./Navbar.css";
+import { LoginContext } from "../context/loginContext";
 
-export default function Navbar({login}) {
-
+  export default function Navbar({ login }) {
+  const { setModalOpen } = useContext(LoginContext );  
   const loginStatus = () =>{
   const token = localStorage.getItem("jwt");
     if(login || token){
       return[
-        <><li>
+        <>
+        <li>
           <Link to="/profile" className="navbar-link">Profile</Link>
         </li>
         <li>
           <Link to="/createpost" className="navbar-link">Create Post</Link>
+        </li>
+        <li>
+          <Link to={""} > <button className='primeryBtn' onClick={()=>setModalOpen(true)}>Log Out</button> </Link>
         </li>
         </>
         
@@ -36,7 +41,7 @@ export default function Navbar({login}) {
     <nav className="navbar">
       <div className="navbar-container">
         {/* Logo */}
-        <Link to="/" className="navbar-logo">
+        <Link to="/Home" className="navbar-logo">
           <img src={logo} alt="Logo" className="logo" />
         </Link>
 
