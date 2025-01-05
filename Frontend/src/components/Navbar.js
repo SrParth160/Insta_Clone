@@ -3,7 +3,35 @@ import { Link } from "react-router-dom";
 import logo from "../img/logo.png";
 import "./Navbar.css";
 
-export default function Navbar() {
+export default function Navbar({login}) {
+
+  const loginStatus = () =>{
+  const token = localStorage.getItem("jwt");
+    if(login || token){
+      return[
+        <><li>
+          <Link to="/profile" className="navbar-link">Profile</Link>
+        </li>
+        <li>
+          <Link to="/createpost" className="navbar-link">Create Post</Link>
+        </li>
+        </>
+        
+      ]
+    }
+    else{
+      return[
+        <>
+        <li>
+          <Link to="/signup" className="navbar-link">Sign Up</Link>
+        </li>
+        <li>
+          <Link to="/login" className="navbar-link">Log In</Link>
+        </li>
+        </>
+      ]
+    }
+  } 
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -14,18 +42,7 @@ export default function Navbar() {
 
         {/* Navigation Links */}
         <ul className="navbar-links">
-          <li>
-            <Link to="/signup" className="navbar-link">Sign Up</Link>
-          </li>
-          <li>
-            <Link to="/login" className="navbar-link">Log In</Link>
-          </li>
-          <li>
-            <Link to="/profile" className="navbar-link">Profile</Link>
-          </li>
-          <li>
-            <Link to="/createpost" className="navbar-link">Create Post</Link>
-          </li>
+        {loginStatus()}
         </ul>
       </div>
     </nav>

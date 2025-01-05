@@ -1,12 +1,31 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 export default function Home(){
+    const navigate = useNavigate();
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const token = localStorage.getItem("jwt");
+        if (!token) {
+            navigate("/signup");
+        }
+
+// fatch posts
+      fetch("http://localhost:5000/api/post/allposts", {
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+    }).then(res => res.json()).then(result => setData(result)).catch(err => console.log(err));
+    }, []);
+
 return <div className="home">
 
 {/* {card} */}
-
-<div className="card">
+{data.map((posts) => {
+    return(
+        <div className="card">
 
 {/* {card Header} */}
 
@@ -37,6 +56,10 @@ favorite
 <button className="comment">post</button>
 </div>
 </div>
+    )
+})}
+
+
 </div>
 
 }

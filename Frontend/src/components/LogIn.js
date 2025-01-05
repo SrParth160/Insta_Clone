@@ -1,59 +1,60 @@
-import React, { useEffect, useState } from "react";
+import React, {useState, useContext } from "react";
 import logo from "../img/logo.png";
 import "./Login.css";
-import {Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import { LoginContext } from "../context/loginContext";
 
 export default function Login() {
-
+  const { setUserLogin } = useContext(LoginContext)
   const Navigate = useNavigate();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-  
-    // Toast functions
-    const notifyERR = (message) => toast.error(message);
-    const notifySUC = (message) => toast.success(message);
-  
-    //email and password regex
-    // const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    // const passRegex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-  
-    const postData = () => {
-      // if (!emailRegex.test(email)) {
-      //   notifyERR("Invalid email format");
-      //   return;
-      // }
-      // else if (!passRegex.test(password)) {
-      //   notifyERR("Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.");
-      //   return;
-      // }
-  
-      fetch("http://localhost:5000/api/user/login", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.error) {
-            notifyERR(data.error);
-          } else {
-            notifySUC(data.message);
-            console.log(data.token);
-            localStorage.setItem("jwt", data.token);
-            Navigate("/Home");
-          }
-          console.log(data);
-        });
-    };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    // login code
+  // Toast functions
+  const notifyERR = (message) => toast.error(message);
+  const notifySUC = (message) => toast.success(message);
+
+  //email and password regex
+  // const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  // const passRegex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+
+  const postData = () => {
+    // if (!emailRegex.test(email)) {
+    //   notifyERR("Invalid email format");
+    //   return;
+    // }
+    // else if (!passRegex.test(password)) {
+    //   notifyERR("Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.");
+    //   return;
+    // }
+
+    fetch("http://localhost:5000/api/user/login", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          notifyERR(data.error);
+        } else {
+          notifySUC("Login successful");
+          console.log(data.token);
+          localStorage.setItem("jwt", data.token);
+          setUserLogin(true);
+          Navigate("/Home");
+        }
+        console.log(data);
+      });
+  };
+
+  // login code
 
   return (
     <div className="login">
@@ -84,7 +85,7 @@ export default function Login() {
             className="signup-input"
             required
           />
-        <input
+          <input
             type="submit"
             id="submit-btn"
             value={"Log in"}
@@ -97,9 +98,10 @@ export default function Login() {
         <p className="login-forgot">Forgot your password?</p>
       </div>
       <div className="signup-redirect">
-        Don't have an account?  <Link to="/signup" className="login-link">
-                  Sign Up
-                </Link>
+        Don't have an account?{" "}
+        <Link to="/signup" className="login-link">
+          Sign Up
+        </Link>
       </div>
     </div>
   );
