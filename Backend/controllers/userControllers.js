@@ -1,10 +1,11 @@
+const { config } = require("dotenv");
 const userService = require("../services/userService"); // Ensure this file has the necessary methods
 const jwt = require("jsonwebtoken");
 var cookieParser = require("cookie-parser");
 const { verifyToken, createToken } = require("../middlewares/auth");
 const USER = require("../models/userModel");
 const bcrypt = require("bcrypt");
-const JWT_ = "mysecretkey";
+const JWT_ = process.env.JWT_SECRET;
 
 exports.signup = async (req, res) => {
   const { name, userName, email, password } = req.body;
@@ -83,12 +84,14 @@ exports.login = async (req, res) => {
       let data = {
         _id: findUser._id,
         email: findUser.email,
+        userName: findUser.userName,
+        name: findUser.name,
       };
       console.log(data);
-
-      const token = jwt.sign({ data }, JWT_);
+      const token = jwt.sign({ _id: data._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+      res.json({ token, data });
       
-      res.json(token);
+      // res.json(token);
 
       // res.cookie("login_token", token);
 

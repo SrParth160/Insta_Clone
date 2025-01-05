@@ -12,23 +12,35 @@ exports.getAllPosts = async (req, res) => {
         res.status(500).json({ error: "Server error" });
     }
 };
-
 exports.createPost = async (req, res) => {
-    const { body, photo } = req.body;
-    // console.log(photo)
-    if (!body) {
-        return res.status(422).json({ error: "Please add all the fields" })
-    }
+    const body = req.body
+    console.log(body);
     
-    const post = new POST({
-        body,
-        photo: photo,
-        postedBy: req.user
-    })
-    post.save().then((result) => {
-        return res.json({ post: result })
-    }).catch(err => console.log(err))
+    try {
+
+        const { body, photo } = req.body;
+
+        if (!body || !photo) {
+            return res.status(422).json({ error: "Please add all the fields" });
+        }
+
+        const post = await postService.createPost({
+            body,
+            photo,
+            user: req.user, // ✅ Pass `req.user`
+            userName: req.user, // ✅ Pass `req.user`
+
+        });
+
+        res.status(201).json({ post });
+    } catch (err) {
+        console.error("Error creating post:", err);
+        res.status(500).json({ error: "Server error, please try again later" });
+    }
 };
+
+
+
 
 exports.getMyPosts = async (req, res) => {
     try {

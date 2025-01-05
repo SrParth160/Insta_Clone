@@ -11,17 +11,25 @@ exports.getAllPosts = () => {
 exports.createPost = ({ body, photo, user }) => {
     const post = new POST({
         body,
-        photo: photo,
-        postedBy: req.user,
-    });
+        photo,
+        postedBy: user._id,
 
-    return post.save();
+    });
+    console.log("Post created successfully");
+
+    return post.save().then((savedPost) =>
+        
+        POST.findById(savedPost._id).populate("postedBy", "_id name userName email")
+    
+    );
+    
 };
+
 
 exports.getMyPosts = (userId) => {
     return POST.find({ postedBy: userId })
-        .populate("postedBy", "_id name")
-        .populate("comments.postedBy", "_id name")
+        .populate("postedBy", "_id name userName email")
+        .populate("comments.postedBy", "_id name userName email")
         .sort("-createdAt");
 };
 

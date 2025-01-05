@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userControllers");
-JWT_SECRET= "mysecretkey"
+const { config } = require("dotenv");
+JWT_SECRET=config
 
 router.get("/", (req, res) => {
     res.send("Welcome to instagram USER");

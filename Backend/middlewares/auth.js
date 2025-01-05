@@ -1,8 +1,9 @@
 require("dotenv").config();
+const { config } = require("dotenv");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const USER = mongoose.model("USER");;
-const JWT_SECRET = "mysecretkey";
+const JWT_SECRET = config;
 
 // exports.generateToken = (userId) => {
 //     return jwt.sign({ _id: userId }, JWT_SECRET, { expiresIn: "7d" });
