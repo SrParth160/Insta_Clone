@@ -41,17 +41,17 @@ export default function Home() {
                   alt=""
                 />
               </div>
-              <h5>lele</h5>
+              <h5>{post.postedBy ? post.postedBy.name : "Unknown User"}</h5>
             </div>
             {/* {card image} */}
             <div className="card-image">
-              <img src="https://images.unsplash.com/photo-1724684410691-8530c765b6dc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+              <img src={post.photo ? post.photo : "currept image"} />
             </div>
             {/* {card content} */}
             <div className="card-content">
               <span class="material-symbols-outlined">favorite</span>
-              <p>1 like</p>
-              <p>amazing</p>
+              <p>{post.likes.length ? post.likes.length : "no data avaliable for"} likes</p>
+              <p>{post.body ? post.body : "no caption"}</p>
             </div>
             {/* {add comment} */}
             <div className="add-comment">

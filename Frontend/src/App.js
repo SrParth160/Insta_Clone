@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
       <LoginContext.Provider value={{setUserLogin,setModalOpen}}>
-        <Navbar Login={userLogin} />
+        <Navbar Login={userLogin}  />
         <Routes>
           <Route path="/Home" element={<Home/>}></Route>
           <Route path="/signup" element={<SignUp/>}></Route>

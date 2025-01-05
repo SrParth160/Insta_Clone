@@ -4,7 +4,7 @@ const POST = require("../models/postModel"); // Ensure this is correct
 exports.getAllPosts = () => {
   return POST.find()
     .populate("postedBy", "_id name profilePhoto")
-    .populate("comments.postedBy", "_id name")
+    .populate("comments.postedBy", "_id name email userName")
     .sort("-createdAt");
 };
 

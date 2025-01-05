@@ -11,13 +11,13 @@ import { LoginContext } from "../context/loginContext";
     if(login || token){
       return[
         <>
-        <li>
+        <li key={"/profile"}>
           <Link to="/profile" className="navbar-link">Profile</Link>
         </li>
-        <li>
+        <li key={"/createpost"}>
           <Link to="/createpost" className="navbar-link">Create Post</Link>
         </li>
-        <li>
+        <li key={""}>
           <Link to={""} > <button className='primeryBtn' onClick={()=>setModalOpen(true)}>Log Out</button> </Link>
         </li>
         </>
@@ -27,10 +27,10 @@ import { LoginContext } from "../context/loginContext";
     else{
       return[
         <>
-        <li>
+        <li key={"/signup"}>
           <Link to="/signup" className="navbar-link">Sign Up</Link>
         </li>
-        <li>
+        <li key={"/login"}>
           <Link to="/login" className="navbar-link">Log In</Link>
         </li>
         </>
