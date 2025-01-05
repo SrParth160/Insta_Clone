@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 
 // Routes
 router.get("/allposts", requireLogin, postController.getAllPosts);
-router.post("/createPost", requireLogin, postController.createPost);
+router.post("/createPost", postController.createPost);
 router.get("/myposts", requireLogin, postController.getMyPosts);
 router.put("/like", requireLogin, postController.likePost);
 router.put("/unlike", requireLogin, postController.unlikePost);

@@ -1,6 +1,9 @@
+const mongoose = require("mongoose");
 const postService = require("../services/postServices");
+const POST = require("../models/postModel");
 
-exports.getAllPosts = async (req, res) => {
+
+exports.getAllPosts = async (req, res) => {   
     try {
         const posts = await postService.getAllPosts();
         res.json(posts);
@@ -11,19 +14,20 @@ exports.getAllPosts = async (req, res) => {
 };
 
 exports.createPost = async (req, res) => {
-    const { body, pic } = req.body;
-
-    if (!body || !pic) {
-        return res.status(422).json({ error: "Please add all the fields" });
+    const { body, photo } = req.body;
+    // console.log(photo)
+    if (!body) {
+        return res.status(422).json({ error: "Please add all the fields" })
     }
-
-    try {
-        const post = await postService.createPost({ body, pic, user: req.user });
-        res.json({ post });
-    } catch (error) {
-        console.error("Error creating post:", error);
-        res.status(500).json({ error: "Server error" });
-    }
+    
+    const post = new POST({
+        body,
+        photo: photo,
+        postedBy: req.user
+    })
+    post.save().then((result) => {
+        return res.json({ post: result })
+    }).catch(err => console.log(err))
 };
 
 exports.getMyPosts = async (req, res) => {

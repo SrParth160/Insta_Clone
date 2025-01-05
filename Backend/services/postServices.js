@@ -1,18 +1,18 @@
 const mongoose = require("mongoose");
-const POST = require("../models/postModel")
+const POST = require("../models/postModel");  // Ensure this is correct
 
 exports.getAllPosts = () => {
     return POST.find()
-        .populate("postedBy", "_id name Photo")
+        .populate("postedBy", "_id name profilePhoto")
         .populate("comments.postedBy", "_id name")
         .sort("-createdAt");
 };
 
-exports.createPost = ({ body, pic, user }) => {
+exports.createPost = ({ body, photo, user }) => {
     const post = new POST({
         body,
-        photo: pic,
-        postedBy: user,
+        photo: photo,
+        postedBy: req.user,
     });
 
     return post.save();

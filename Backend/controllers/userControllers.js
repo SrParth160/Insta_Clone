@@ -87,12 +87,14 @@ exports.login = async (req, res) => {
       console.log(data);
 
       const token = jwt.sign({ data }, JWT_);
+      
+      res.json(token);
 
-      res.cookie("login_token", token);
+      // res.cookie("login_token", token);
 
-      res.status(200).json({
-        message: "login success",
-      });
+      // res.status(200).json({
+      //   message: "login success",
+      // });
     } else {
       res.status(500).json({
         error: "Enter valid password",
