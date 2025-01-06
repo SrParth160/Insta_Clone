@@ -23,10 +23,10 @@ const userSchema = new mongoose.Schema({
     //     type: String,
     //     default: "",
     // },
-    // profilePhoto: {
-    //     type: String,
-    //     default: "defaultProfilePhotoUrl",
-    // },
+    profilePhoto: {
+        type: String,
+        default: "defaultProfilePhotoUrl",
+    },
     // followers: [{ type: ObjectId, ref: "USER" }],
     // following: [{ type: ObjectId, ref: "USER" }],
     // posts: [{ type: ObjectId, ref: "POST" }],

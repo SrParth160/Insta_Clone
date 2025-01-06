@@ -5,6 +5,7 @@ const app = express()
 const { connectDB } = require("./db/dbConnect");
 const userRoutes = require("./routes/userRoutes");
 const postRoutes = require("./routes/postRoutes");
+const uRoutes = require("./routes/user")
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
@@ -22,6 +23,7 @@ app.use(cookieParser());
 
 app.use("/api/user", userRoutes);
 app.use("/api/post",postRoutes);
+app.get("/",uRoutes)
 
 //DB connect
 connectDB();
