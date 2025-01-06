@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 app.use("/api/user", userRoutes);
 app.use("/api/post",postRoutes);
-app.get("/",uRoutes)
+// app.get("/user",uRoutes)
 
 //DB connect
 connectDB();

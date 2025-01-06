@@ -1,32 +1,64 @@
 import React, { useState, useEffect, useRef } from "react";
 
-export default function ProfilePic() {
-    const hiddenFileInput = useRef(null);
-    const [image, setImage] = useState("");
-    const [url, setUrl] = useState("");
-  
-    const handleClick = () => {
-        hiddenFileInput.current.click();
-      };
-      const postDetails = () => {
-        const data = new FormData();
-        data.append("file", image);
-        data.append("upload_preset", "insta-clone");
-        data.append("cloud_name", "cantacloud2");
-        fetch("https://api.cloudinary.com/v1_1/cantacloud2/image/upload", {
-          method: "post",
-          body: data,
-        })
-          .then((res) => res.json())
-          .then((data) => setUrl(data.url))
-          .catch((err) => console.log(err));
-        console.log(url);
-      };
-    
+export default function ProfilePic({ changeprofile }) {
+  const hiddenFileInput = useRef(null);
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
 
-    return (
-    <div className='ProfilePic darkBg'>
-<div className="changePic centered">
+  const postDetails = () => {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "insta-clone");
+    data.append("cloud_name", "dnig1wwzx");
+    fetch("https://api.cloudinary.com/v1_1/dnig1wwzx/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => setUrl(data.url))
+      .catch((err) => console.log(err));
+    console.log(url);
+    console.log(data);
+    
+  };
+
+  const postPic = () => {
+    // saving post to mongodb
+    fetch("http://localhost:5000/uploadProfilePic", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        pic: url,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        changeprofile();
+      })
+      .catch((err) => console.log(err));
+  };
+  const handleClick = () => {
+    hiddenFileInput.current.click();
+  };
+
+  useEffect(() => {
+    if (image) {
+        postDetails();
+    }
+  },[image]);
+  useEffect(() => {
+    if (url) {
+      postPic();
+    }
+  }, [url]);
+
+  return (
+    <div className="ProfilePic darkBg">
+      <div className="changePic centered">
         <div>
           <h2>Change Profile Photo</h2>
         </div>
@@ -48,7 +80,26 @@ export default function ProfilePic() {
             }}
           />
         </div>
+        <div style={{ borderTop: "1px solid #00000030" }}>
+          <button className="upload-btn" style={{ color: "#ED4956" }}>
+            {" "}
+            Remove Current Photo
+          </button>
+        </div>
+        <div style={{ borderTop: "1px solid #00000030" }}>
+          <button
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "15px",
+            }}
+            onClick={changeprofile}
+          >
+            cancel
+          </button>
+        </div>
+      </div>
     </div>
-    </div>
-    )
+  );
 }
