@@ -109,7 +109,7 @@ export default function Home() {
         console.log(result);
       });
   };
-
+// show comment
   const toggleComment = (post) => {
     if (show) {
       setShow(false);

@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
-// import PostDetail from "./PostDetail";
+import PostDetail from "./PostDetail";
 import "./Profile.css";
 // import ProfilePic from "./ProfilePic";
 
 export default function Profile() {
   // var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png"
   const [pic, setPic] = useState([]);
-  // const [show, setShow] = useState(false)
-  // const [posts, setPosts] = useState([]);
+  const [show, setShow] = useState(false)
+  const [posts, setPosts] = useState([]);
   const [user, setUser] = useState("")
   // const [changePic, setChangePic] = useState(false)
 
-   
+  const toggleDetails = (post) => {
+    if (show) {
+      setShow(false);
+      setPosts([]);
+    } else {
+      setShow(true);
+      setPosts(post);
+    }
+  };
 
   useEffect(() => {
     fetch("http://localhost:5000/api/post/myposts", {
@@ -53,11 +61,14 @@ export default function Profile() {
         {pic.map((pics) => {
           return <img src={pics.photo}
             onClick={() => {
+              toggleDetails(pics)
             }}
             className="item" />;
         })}
         {/* <img src="https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" /> */}
         </div>
+        {show &&  
+        <PostDetail item={posts} toggleDetails={toggleDetails} />}
     </div>
   )
 }

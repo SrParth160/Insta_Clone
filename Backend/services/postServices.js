@@ -62,6 +62,8 @@ exports.addComment = (postId, text, userId) => {
 };
 
 exports.deletePost = async (postId, userId) => {
+  
+  
   const post = await POST.findOne({ _id: postId }).populate("postedBy", "_id");
 
   if (!post) {
@@ -69,10 +71,10 @@ exports.deletePost = async (postId, userId) => {
   }
 
   if (post.postedBy._id.toString() !== userId.toString()) {
-    throw new Error("Unauthorized action");
+    throw new Error("Not Authorized to do this");
   }
 
-  await post.remove();
+  await post.deleteOne();
   return { message: "Successfully deleted" };
 };
 
