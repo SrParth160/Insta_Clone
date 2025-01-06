@@ -7,6 +7,8 @@ export default function Home() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [comment, setComment] = useState("");
+  const [show, setShow] = useState(false);
+  const [item, setItem] = useState([]);
 
   // Toast functions
   const notifyERR = (message) => toast.error(message);
@@ -107,12 +109,23 @@ export default function Home() {
         console.log(result);
       });
   };
+
+  const toggleComment = (post) => {
+    if (show) {
+      setShow(false);
+      setItem([]);
+    } else {
+      setShow(true);
+      setItem(post);
+    }
+  };
+
   return (
     <div className="home">
       {/* card */}
       {data.map((post) => {
         return (
-          <div className="card">
+          <div className="card" key={post._id}>
             {/* {card Header} */}
 
             <div className="card-header">
@@ -160,6 +173,12 @@ export default function Home() {
                 likes
               </p>
               <p>{post.body ? post.body : "no caption"}</p>
+              <span
+                className="material-symbols-outlined"
+                onClick={() => toggleComment(post)}
+              >
+                comment
+              </span>
             </div>
             {/* {add comment} */}
             <div className="add-comment">
