@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-export default function ProfilePic({ changeprofile }) {
+export default function ProfilePic({ changeProfile }) {
   const hiddenFileInput = useRef(null);
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
@@ -21,7 +21,6 @@ export default function ProfilePic({ changeprofile }) {
     console.log(data);
     
   };
-
   const postPic = () => {
     // saving post to mongodb
     fetch("http://localhost:5000/uploadProfilePic", {
@@ -31,13 +30,15 @@ export default function ProfilePic({ changeprofile }) {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
       body: JSON.stringify({
-        pic: url,
+        pic: url,        
+        
       }),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        changeprofile();
+        changeProfile();
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };
@@ -87,15 +88,13 @@ export default function ProfilePic({ changeprofile }) {
           </button>
         </div>
         <div style={{ borderTop: "1px solid #00000030" }}>
-          <button
+          <button onClick={changeProfile}
             style={{
               background: "none",
               border: "none",
               cursor: "pointer",
               fontSize: "15px",
-            }}
-            onClick={changeprofile}
-          >
+            }}>          
             cancel
           </button>
         </div>

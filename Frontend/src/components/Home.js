@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ export default function Home() {
           }
         });
         setData(newData);
-        // console.log(result);
+        console.log(newData)
       });
   };
   const unlikePost = (id) => {
@@ -105,11 +106,11 @@ export default function Home() {
         });
         setData(newData);
         setComment("");
-        notifyERR("Comment posted");
+        notifySUC("Comment posted");
         console.log(result);
       });
   };
-// show comment
+  // show comment
   const toggleComment = (post) => {
     if (show) {
       setShow(false);
@@ -135,7 +136,11 @@ export default function Home() {
                   alt=""
                 />
               </div>
-              <h5>{post.postedBy ? post.postedBy.name : "Unknown User"}</h5>
+              <h5>
+                <Link to={`/profile/${post._id}`} style={{ color: "black" }}>
+                  {post.postedBy ? post.postedBy.name : "Unknown User"}
+                </Link>
+              </h5>
             </div>
             {/* {card image} */}
             <div className="card-image">

@@ -9,6 +9,7 @@ import Profile from "./components/Profile";
 import CreatePost from "./components/CreatePost";
 import { LoginContext } from "./context/loginContext";
 import Modal from "./components/Modal";
+import UserProfile from "./components/UserProfile";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -26,8 +27,10 @@ function App() {
           <Route path="/Home" element={<Home/>}></Route>
           <Route path="/signup" element={<SignUp/>}></Route>
           <Route path="/login" element={<LogIn/>}></Route>
-          <Route path="/profile" element={<Profile/>}></Route>
+          <Route exact path="/profile" element={<Profile/>}></Route>
           <Route path="/createpost" element={<CreatePost/>}></Route>
+          <Route path="/profile/:userid" element={<UserProfile/>}></Route>
+
  </Routes>
         <ToastContainer theme="dark"/>
        {modalOpen && <Modal></Modal>}
