@@ -90,7 +90,7 @@ exports.login = async (req, res) => {
       console.log(data);
       const token = jwt.sign({ _id: data._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
       res.json({ token, data });
-      
+
       // res.json(token);
 
       // res.cookie("login_token", token);

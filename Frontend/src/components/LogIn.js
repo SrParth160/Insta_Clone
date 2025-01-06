@@ -47,6 +47,8 @@ export default function Login() {
           notifySUC("Login successful");
           console.log(data.token);
           localStorage.setItem("jwt", data.token);
+          localStorage.setItem("user", JSON.stringify(data.data));
+          
           setUserLogin(true);
           Navigate("/Home");
         }

@@ -49,3 +49,12 @@ width: auto;
   cursor: pointer;
   color: rgb(42, 42, 255);
 }
+.material-symbols-outlined-red{
+  color: red;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+
+}

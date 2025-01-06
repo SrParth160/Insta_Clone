@@ -24,7 +24,7 @@ export default function Profile() {
       .then((result) => {
         console.log(result)
         setPic(result);
-        setUser(result.postedBy.userName);
+        // setUser(result.postedBy.userName);
         // console.log(pic);
       });
   }, []);
@@ -38,7 +38,7 @@ export default function Profile() {
         </div>
         {/* profile data */}
         <div className="profile-data">
-          <h1>{ }</h1>
+          <h1>{JSON.parse(localStorage.getItem("user")).name }</h1>
           <div className="profile-info" >
             <p>{pic.length} post </p>
             <p>40 followers </p>

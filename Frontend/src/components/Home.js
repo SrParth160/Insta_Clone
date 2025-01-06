@@ -5,9 +5,9 @@ import "./Home.css";
 export default function Home() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [comment, setComment] = useState("");
 
-  console.log(data);
-  
+  // console.log(data);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -26,6 +26,54 @@ export default function Home() {
       .catch((err) => console.log(err));
   }, []);
 
+  const likePost = (id) => {
+    fetch("http://localhost:5000/api/post/like", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        const newData = data.map((post) => {
+          if (post._id === result._id) {
+            return result;
+          } else {
+            return post;
+          }
+        });
+        setData(newData);
+        // console.log(result);
+      });
+  };
+  const unlikePost = (id) => {
+    fetch("http://localhost:5000/api/post/unlike", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        const newData = data.map((post) => {
+          if (post._id === result._id) {
+            return result;
+          } else {
+            return post;
+          }
+        });
+        setData(newData);
+        // console.log(result);
+      });
+  };
   return (
     <div className="home">
       {/* card */}
@@ -47,18 +95,57 @@ export default function Home() {
             <div className="card-image">
               <img src={post.photo ? post.photo : "currept image"} />
             </div>
+            
             {/* {card content} */}
             <div className="card-content">
-              <span class="material-symbols-outlined">favorite</span>
-              <p>{post.likes.length ? post.likes.length : "no data avaliable for"} likes</p>
+              {post.likes.includes(
+                JSON.parse(localStorage.getItem("user"))._id
+              ) ? (
+                <span
+                  class="material-symbols-outlined material-symbols-outlined-red"
+                  onClick={() => {
+                    unlikePost(post._id);
+                  }}
+                >
+                  favorite
+                </span>
+              ) : (
+                <span
+                  class="material-symbols-outlined"
+                  onClick={() => {
+                    likePost(post._id);
+                  }}
+                >
+                  favorite
+                </span>
+              )}
+
+              <p>
+                {post.likes.length
+                  ? post.likes.length
+                  : "no data avaliable for"}{" "}
+                likes
+              </p>
               <p>{post.body ? post.body : "no caption"}</p>
             </div>
             {/* {add comment} */}
             <div className="add-comment">
               {/* <span class="material-symbols-outlined"></span> */}
 
-              <input type="text" placeholder="Add Comment" />
-              <button className="comment">post</button>
+              <input
+                type="text"
+                placeholder="Add Comment"
+                value={comment}
+                onChange={(e) => {
+                  setComment(e.target.value);
+                }}
+              />
+              <button className="comment" 
+              onClick={() => {
+                    makeComment(comment, item._id);
+                    toggleComment();
+              }}
+                    >post</button>
             </div>
           </div>
         );
