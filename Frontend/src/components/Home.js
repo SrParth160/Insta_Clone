@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
+import { toast } from "react-toastify";
+
 
 export default function Home() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [comment, setComment] = useState("");
+
+    // Toast functions
+    const notifyERR = (message) => toast.error(message);
+    const notifySUC = (message) => toast.success(message);
 
   // console.log(data);
 
@@ -72,6 +78,34 @@ export default function Home() {
         });
         setData(newData);
         // console.log(result);
+      });
+  };
+
+  const makeComment = (text, id) => {
+    fetch("http://localhost:5000/api/post/comment", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        text: text,
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        const newData = data.map((posts) => {
+          if (posts._id == result._id) {
+            return result;
+          } else {
+            return posts;
+          }
+        });
+        setData(newData);
+        setComment("");
+        notifyERR("Comment posted");
+        console.log(result);
       });
   };
   return (
@@ -142,8 +176,8 @@ export default function Home() {
               />
               <button className="comment" 
               onClick={() => {
-                    makeComment(comment, item._id);
-                    toggleComment();
+                    makeComment(comment, post._id);
+                    // toggleComment();
               }}
                     >post</button>
             </div>
