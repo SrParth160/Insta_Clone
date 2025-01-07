@@ -7,7 +7,7 @@ const USER = mongoose.model("USER");
 
 // get user profile
 router.get("/user/:_id", 
-  // requireLogin,
+  requireLogin,
    async (req, res) => {
   try {
     const user = await USER.findOne({ _id: req.params._id }).select("-password")
@@ -26,7 +26,7 @@ router.get("/user/:_id",
 
 // to follow user
 router.put("/follow",
-  // requireLogin,
+  requireLogin,
   async (req,res)=>{
   try{
       const followUser = await USER.findByIdAndUpdate(req.body.followId,{
@@ -53,7 +53,7 @@ router.put("/follow",
 })
 
 router.put("/unfollow",
-  // requireLogin,
+  requireLogin,
    async (req,res)=>{
   try{
       const followUser = await USER.findByIdAndUpdate(req.body.followId,{
@@ -82,7 +82,7 @@ router.put("/unfollow",
 // to update profile pic
 
 router.put("/uploadProfilePic",
-  // requireLogin,
+  requireLogin,
   async (req,res)=>{
   try{
     const updatedUser = await USER.findByIdAndUpdate(req.data._id,{
@@ -100,5 +100,17 @@ router.put("/uploadProfilePic",
     console.log(err)
   }
 })
+// to show following post
+
+router.get("/myfollwingpost", requireLogin, (req, res) => {
+  POST.find({ postedBy: { $in: req.user.following } })
+      .populate("postedBy", "_id name")
+      .populate("comments.postedBy", "_id name")
+      .then(posts => {
+          res.json(posts)
+      })
+      .catch(err => { console.log(err) })
+})
+
 
 module.exports = router;

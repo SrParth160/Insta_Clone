@@ -71,6 +71,10 @@ export default function UserProfie() {
         }
       });
   }, [isFollow]);
+  
+  console.log(user);
+
+  
 
   return (
     <div className="profile">
@@ -93,11 +97,13 @@ export default function UserProfie() {
             <button
               className="followBtn"
               onClick={() => {
+                console.log(user._id);
                 if (isFollow) {
                   unfollowUser(user._id);
                 } else {
                   followUser(user._id);
                 }
+                
               }}
             >
               {isFollow ? "Unfollow" : "Follow"}

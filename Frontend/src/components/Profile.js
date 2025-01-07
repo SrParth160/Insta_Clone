@@ -40,10 +40,10 @@ export default function Profile() {
       .then((result) => {
         console.log(result)
         setPic(result);
-        // setUser(result.postedBy.userName);
-        // console.log(pic);
       });
   }, []);
+
+
   return (
     <div className='profile'>
       {/* Profile frame */}
@@ -57,8 +57,8 @@ export default function Profile() {
           <h1>{JSON.parse(localStorage.getItem("user")).name }</h1>
           <div className="profile-info" >
             <p>{pic.length} post </p>
-            <p>40 followers </p>
-            <p>40 following </p>
+            <p>{JSON.parse(localStorage.getItem("user")).followers.length} followers </p>
+            <p>{JSON.parse(localStorage.getItem("user")).following.length} following </p>
 
           </div>
         </div>

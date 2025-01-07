@@ -17,8 +17,7 @@ export default function ProfilePic({ changeProfile }) {
       .then((res) => res.json())
       .then((data) => setUrl(data.url))
       .catch((err) => console.log(err));
-    console.log(url);
-    console.log(data);
+    console.log(data.stringify);
     
   };
   const postPic = () => {
