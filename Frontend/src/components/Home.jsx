@@ -11,6 +11,9 @@ export default function Home() {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState([]);
 
+  console.log(data);
+  
+
   // Toast functions
   const notifyERR = (message) => toast.error(message);
   const notifySUC = (message) => toast.success(message);
@@ -137,9 +140,9 @@ export default function Home() {
                 />
               </div>
               <h5>
-                <Link to={`/profile/${post._id}`} style={{ color: "black" }}>
-                  {post.postedBy ? post.postedBy.name : "Unknown User"}
-                </Link>
+              <Link to={post.postedBy ? `/profile/${post.postedBy._id}` : "#"} style={{ color: "black" }}>
+  {post.postedBy ? post.postedBy.name : "Unknown User"}
+</Link>
               </h5>
             </div>
             {/* {card image} */}
@@ -209,7 +212,9 @@ export default function Home() {
           </div>
         );
       })}
+
       {show && (
+        
         <div className="showComment">
           <div className="container">
             <div className="postPic">

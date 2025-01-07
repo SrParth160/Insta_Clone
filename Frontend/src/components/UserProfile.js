@@ -5,13 +5,14 @@ import { useParams } from "react-router-dom";
 
 export default function UserProfie() {
   var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png";
-  const { userid } = useParams();
+  const { _id } = useParams();
   const [isFollow, setIsFollow] = useState(false);
   const [user, setUser] = useState("");
   const [posts, setPosts] = useState([]);
+  
 
   // to follow user
-  const followUser = (userId) => {
+  const followUser = (_id) => {
     fetch("http://localhost:5000/follow", {
       method: "put",
       headers: {
@@ -19,7 +20,7 @@ export default function UserProfie() {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
       body: JSON.stringify({
-        followId: userId,
+        followId: _id,
       }),
     })
       .then((res) => res.json())
@@ -30,7 +31,7 @@ export default function UserProfie() {
   };
 
   // to unfollow user
-  const unfollowUser = (userId) => {
+  const unfollowUser = (_id) => {
     fetch("http://localhost:5000/unfollow", {
       method: "put",
       headers: {
@@ -38,7 +39,7 @@ export default function UserProfie() {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
       body: JSON.stringify({
-        followId: userId,
+        followId: _id,
       }),
     })
       .then((res) => {
@@ -51,7 +52,7 @@ export default function UserProfie() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${userid}`, {
+    fetch(`http://localhost:5000/user/${_id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

@@ -29,7 +29,7 @@ function App() {
           <Route path="/login" element={<LogIn/>}></Route>
           <Route exact path="/profile" element={<Profile/>}></Route>
           <Route path="/createpost" element={<CreatePost/>}></Route>
-          <Route path="/profile/:userid" element={<UserProfile/>}></Route>
+          <Route path="/profile/:_id" element={<UserProfile/>}></Route>
 
  </Routes>
         <ToastContainer theme="dark"/>
