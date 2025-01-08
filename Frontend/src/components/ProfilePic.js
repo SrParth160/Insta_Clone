@@ -10,16 +10,17 @@ export default function ProfilePic({ changeprofile }) {
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "insta-clone");
-    data.append("cloud_name", "cantacloud2");
-    fetch("https://api.cloudinary.com/v1_1/cantacloud2/image/upload", {
+    data.append("cloud_name", "dnig1wwzx");
+    fetch("https://api.cloudinary.com/v1_1/dnig1wwzx/image/upload", {
       method: "post",
       body: data,
     })
       .then((res) => res.json())
       .then((data) => setUrl(data.url))
       .catch((err) => console.log(err));
-    console.log(data.url);
   };
+
+
 
   const postPic = () => {
     // saving post to mongodb
@@ -56,6 +57,7 @@ export default function ProfilePic({ changeprofile }) {
       postPic();
     }
   }, [url]);
+  
   return (
     <div className="profilePic darkBg">
       <div className="changePic centered">

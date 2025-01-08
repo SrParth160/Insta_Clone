@@ -3,7 +3,7 @@ import PostDetail from "./PostDetail";
 import "./Profile.css";
 import ProfilePic from "./ProfilePic";
 
-export default function Profile() {
+export default function Profie() {
   var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png"
   const [pic, setPic] = useState([]);
   const [show, setShow] = useState(false)
@@ -11,76 +11,89 @@ export default function Profile() {
   const [user, setUser] = useState("")
   const [changePic, setChangePic] = useState(false)
 
-  const toggleDetails = (post) => {
+
+  const toggleDetails = (posts) => {
     if (show) {
       setShow(false);
-      setPosts([]);
     } else {
       setShow(true);
-      setPosts(post);
+      setPosts(posts);
     }
   };
 
   const changeprofile = () => {
-    if(changePic){
+    if (changePic) {
       setChangePic(false)
-    }else{
+    } else {
       setChangePic(true)
     }
   }
 
+
   useEffect(() => {
-    fetch("http://localhost:5000/api/post/myposts", {
-    // fetch(`http://localhost:5000/api/user/${JSON.parse(localStorage.getItem("user"))._id}`, {
+    fetch(`http://localhost:5000/user/${JSON.parse(localStorage.getItem("user"))._id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
     })
       .then((res) => res.json())
       .then((result) => {
+        setPic(result.post);
+        setUser(result.user)
         console.log(result)
-        setPic(result);
       });
   }, []);
 
+  
+console.log(user.Photo);
 
   return (
-    <div className='profile'>
+    <div className="profile">
       {/* Profile frame */}
       <div className="profile-frame">
-        {/* profile pic */}
-        <div className="profile-pic" >
-          <img onClick={changeprofile} src="https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+        {/* profile-pic */}
+        <div className="profile-pic">
+          <img
+            onClick={changeprofile}
+            src={user.Photo ? user.Photo : picLink}
+          
+          />
         </div>
-        {/* profile data */}
-        <div className="profile-data">
-          <h1>{JSON.parse(localStorage.getItem("user")).name }</h1>
-          <div className="profile-info" >
-            <p>{pic.length} post </p>
-            <p>{JSON.parse(localStorage.getItem("user")).followers.length} followers </p>
-            <p>{JSON.parse(localStorage.getItem("user")).following.length} following </p>
-
+        {/* profile-data */}
+        <div className="pofile-data">
+          <h1>{JSON.parse(localStorage.getItem("user")).name}</h1>
+          <div className="profile-info" style={{ display: "flex" }}>
+            <p>{pic ? pic.length : "0"} posts</p>
+            <p>{user.followers ? user.followers.length : "0"} followers</p>
+            <p>{user.following ? user.following.length : "0"} following</p>
           </div>
         </div>
-        
       </div>
-    {/* gallery */}
-        <div className="gallery">
+      <hr
+        style={{
+          width: "90%",
+
+          opacity: "0.8",
+          margin: "25px auto",
+        }}
+      />
+      {/* Gallery */}
+      <div className="gallery">
         {pic.map((pics) => {
-          return <img src={pics.photo}
+          return <img key={pics._id} src={pics.photo}
             onClick={() => {
               toggleDetails(pics)
             }}
-            className="item" />;
+            className="item"></img>;
         })}
-        {/* <img src="https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" /> */}
-        </div>
-        {show &&  
-        <PostDetail item={posts} toggleDetails={toggleDetails} />}
-        {
-          changePic &&
-          <ProfilePic changeprofile={changeprofile}/>
-        }
+      </div>
+      {show &&
+        <PostDetail item={posts} toggleDetails={toggleDetails} />
+      }
+      {
+        changePic &&
+        <ProfilePic changeprofile={changeprofile} />
+      }
     </div>
-  )
+  );
 }

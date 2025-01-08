@@ -81,19 +81,24 @@ router.put("/unfollow",
 
 // to update profile pic
 
-router.put("/uploadProfilePic", requireLogin, (req, res) => {
-  USER.findByIdAndUpdate(req.data._id, {
-      $set: { Photo: req.body.pic }
-  }, {
-      new: true
-  }).exec((err, result) => {
-      if (err) {
-          return res.status(422).json({ error: er })
-      } else {
-          res.json(result)
-      }
-  })
-})
+router.put("/uploadProfilePic", requireLogin, async (req, res) => {
+  try {
+    const updatedUser = await USER.findByIdAndUpdate(
+      req.user._id,
+      { $set: { Photo: req.body.pic } },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(422).json({ error: "Pic cannot be updated" });
+    }
+
+    res.json(updatedUser);
+  } catch (err) {
+    console.error("Error updating profile picture:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 
 module.exports = router;

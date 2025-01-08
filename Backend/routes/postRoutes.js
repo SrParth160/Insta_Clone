@@ -15,7 +15,7 @@ router.put("/like", requireLogin, postController.likePost);
 router.put("/unlike", requireLogin, postController.unlikePost);
 router.put("/comment", requireLogin, postController.addComment);
 router.delete("/deletePost/:postId", requireLogin, postController.deletePost);
-router.get("/myfollwingpost", requireLogin, postController.getFollowingPosts);
+// router.get("/myfollwingpost", requireLogin, postController.getFollowingPosts);
 
 // to show following post
 router.get("/myfollwingposts", requireLogin, (req, res) => {

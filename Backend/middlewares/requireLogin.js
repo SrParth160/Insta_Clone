@@ -55,7 +55,7 @@ module.exports = async (req, res, next) => {
     
         try {
             const { _id } = payload;
-            const user = await USER.findById(_id).select("_id name email profilePhoto");
+            const user = await USER.findById(_id).select("_id name email Photo");
     
             if (!user) {
                 console.log("User ID from Token:", _id);  // 🔍 Debug
