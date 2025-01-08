@@ -17,4 +17,15 @@ router.put("/comment", requireLogin, postController.addComment);
 router.delete("/deletePost/:postId", requireLogin, postController.deletePost);
 router.get("/myfollwingpost", requireLogin, postController.getFollowingPosts);
 
+// to show following post
+router.get("/myfollwingposts", requireLogin, (req, res) => {
+    POST.find({ postedBy: { $in: req.user.following } })
+        .populate("postedBy", "_id name")
+        .populate("comments.postedBy", "_id name")
+        .then(posts => {
+            res.json(posts)
+        })
+        .catch(err => { console.log(err) })
+})
+
 module.exports = router;

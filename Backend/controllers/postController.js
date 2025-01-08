@@ -116,8 +116,10 @@ exports.getFollowingPosts = async (req, res) => {
       return res.status(401).json({ error: "Unauthorized: User not found" });
     }
 
-    const posts = await postService.getFollowingPosts(req.user.following);
+    const posts = await postService.getFollowingPosts(req.data);
     res.json(posts);
+    console.log(posts);
+    
   } catch (error) {
     console.error("Error fetching following posts:", error);
     res.status(500).json({ error: "Server error" });

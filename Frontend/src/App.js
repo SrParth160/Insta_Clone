@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/profile" element={<Profile/>}></Route>
           <Route path="/createpost" element={<CreatePost/>}></Route>
           <Route path="/profile/:_id" element={<UserProfile/>}></Route>
-          <Route path="/followingposts" element={<MyFolliwngPost/>}></Route>
+          <Route path="/myfollowingpost" element={<MyFolliwngPost/>}></Route>
 
 
  </Routes>

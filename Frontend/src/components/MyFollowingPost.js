@@ -12,8 +12,8 @@ export default function MyFolliwngPost() {
   const [item, setItem] = useState([]);
 
   // Toast functions
-  const notifyERR = (msg) => toast.error(msg);
-  const notifySUC = (msg) => toast.success(msg);
+  const notifyA = (msg) => toast.error(msg);
+  const notifyB = (msg) => toast.success(msg);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -118,7 +118,7 @@ export default function MyFolliwngPost() {
         });
         setData(newData);
         setComment("");
-        notifySUC("Comment posted");
+        notifyB("Comment posted");
         console.log(result);
       });
   };

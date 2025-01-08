@@ -81,35 +81,18 @@ router.put("/unfollow",
 
 // to update profile pic
 
-router.put("/uploadProfilePic",
-  requireLogin,
-  async (req,res)=>{
-  try{
-    const updatedUser = await USER.findByIdAndUpdate(req.data._id,{
-      $set:{Photo:req.body.pic}
-    },{
-      new:true
-    })
-    
-      if(!updatedUser){
-        return res.status(422).json({error:"Pic cannot be updated"})
+router.put("/uploadProfilePic", requireLogin, (req, res) => {
+  USER.findByIdAndUpdate(req.data._id, {
+      $set: { Photo: req.body.pic }
+  }, {
+      new: true
+  }).exec((err, result) => {
+      if (err) {
+          return res.status(422).json({ error: er })
       } else {
-        res.json(updatedUser)
+          res.json(result)
       }
-  } catch(err) {
-    console.log(err)
-  }
-})
-// to show following post
-
-router.get("/myfollwingpost", requireLogin, (req, res) => {
-  POST.find({ postedBy: { $in: req.user.following } })
-      .populate("postedBy", "_id name")
-      .populate("comments.postedBy", "_id name")
-      .then(posts => {
-          res.json(posts)
-      })
-      .catch(err => { console.log(err) })
+  })
 })
 
 

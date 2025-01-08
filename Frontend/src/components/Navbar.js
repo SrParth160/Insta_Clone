@@ -18,7 +18,9 @@ import { LoginContext } from "../context/loginContext";
           <Link to="/createpost" className="navbar-link">Create Post</Link>
         </li>
         <li key={"/followingposts"}>
-          <Link to="/myfollowingpost" className="navbar-link">My Following Post</Link>
+        <Link to="/myfollowingpost" className="navbar-link">
+            My Following
+          </Link>
         </li>
         <li key={""}>
           <Link to={""} > <button className='primeryBtn' onClick={()=>setModalOpen(true)}>Log Out</button> </Link>

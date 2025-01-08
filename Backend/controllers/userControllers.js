@@ -86,12 +86,22 @@ exports.login = async (req, res) => {
         email: findUser.email,
         userName: findUser.userName,
         name: findUser.name,
-        followers:findUser.followers,
-        following:findUser.following
-
+        followers: findUser.followers,
+        following: findUser.following,
       };
       console.log(data);
-      const token = jwt.sign({ _id: data._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+      const token = jwt.sign(
+        {
+          _id: data._id,
+          email: findUser.email,
+          userName: findUser.userName,
+          name: findUser.name,
+          followers: findUser.followers,
+          following: findUser.following,
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: "7d" }
+      );
       res.json({ token, data });
 
       // res.json(token);
