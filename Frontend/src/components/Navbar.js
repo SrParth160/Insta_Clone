@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import logo from "../img/logo.png";
 import "./Navbar.css";
 import { LoginContext } from "../context/loginContext";
+import { useNavigate
+
+ } from 'react-router-dom';
 
   export default function Navbar({ login }) {
+    const navigate = useNavigate();
   const { setModalOpen } = useContext(LoginContext );  
   const loginStatus = () =>{
   const token = localStorage.getItem("jwt");
@@ -47,7 +51,7 @@ import { LoginContext } from "../context/loginContext";
       <div className="navbar-container">
         {/* Logo */}
         <Link to="/Home" className="navbar-logo">
-          <img src={logo} alt="Logo" className="logo" />
+          <img src={logo} alt="Logo" className="logo"  />
         </Link>
 
         {/* Navigation Links */}

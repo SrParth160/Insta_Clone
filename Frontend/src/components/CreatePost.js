@@ -102,11 +102,11 @@ export default function CreatePost() {
             <div className="card-header">
               <div>
                 <img
-                  src="https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  src={JSON.parse(localStorage.getItem("user")).Photo}
                   alt=""
                 />
               </div>
-              <h5>Ramesh</h5>
+              <h5>{JSON.parse(localStorage.getItem("user")).name}</h5>
             </div>
             <textarea
               value={body}

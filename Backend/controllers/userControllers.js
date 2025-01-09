@@ -88,6 +88,7 @@ exports.login = async (req, res) => {
         name: findUser.name,
         followers: findUser.followers,
         following: findUser.following,
+        Photo: findUser.Photo
       };
       console.log(data);
       const token = jwt.sign(

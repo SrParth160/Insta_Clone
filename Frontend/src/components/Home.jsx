@@ -177,7 +177,7 @@ export default function Home() {
               <p>
                 {post.likes.length
                   ? post.likes.length
-                  : "no data avaliable for"}{" "}
+                  : "0"}{" "}
                 likes
               </p>
               <p>{post.body ? post.body : "no caption"}</p>
