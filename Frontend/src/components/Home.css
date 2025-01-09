@@ -108,8 +108,8 @@ width: auto;
 
 .close-comment{
   position: fixed;
-  top: 1%;
-  right: 5%;
+  top: 6%;
+  right: 7%;
   color: white;
   border: none;
   cursor: pointer;
@@ -125,3 +125,34 @@ font-variation-settings:
 'opsz' 48
 }
 
+.card-content {
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+/* Like Button */
+.material-symbols-outlined {
+  font-size: 24px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s ease-in-out;
+}
+
+.material-symbols-outlined-red {
+  color: red;
+}
+
+/* Likes Count */
+p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Comment Button */
+.material-symbols-outlined:last-child {
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  margin-top: 5px;
+}

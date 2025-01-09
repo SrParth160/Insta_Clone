@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { FaRegComment } from "react-icons/fa";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -185,7 +186,7 @@ export default function Home() {
                 className="material-symbols-outlined"
                 onClick={() => toggleComment(post)}
               >
-                comment
+              <FaRegComment />
               </span>
             </div>
             {/* {add comment} */}

@@ -44,8 +44,8 @@
   
   .close-comment{
     position: fixed;
-    top: 3%;
-    right: 5%;
+    top: 6%;
+    right: 7%;
     color: rgb(0, 0, 0);
     border: none;
     cursor: pointer;
