@@ -59,7 +59,6 @@ export default function UserProfie() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         setUser(result.user);
         setPosts(result.post);
         if (
@@ -72,7 +71,6 @@ export default function UserProfie() {
       });
   }, [isFollow]);
   
-  console.log(user);
 
   
 
