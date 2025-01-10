@@ -26,7 +26,8 @@ exports.createPost = async (req, res) => {
     const post = await postService.createPost({
       body,
       photo,
-      user:req.user._id, // Send only user ID instead of full object
+      user:req.user._id,
+       // Send only user ID instead of full object
     });
 
     res.status(201).json({ post });
@@ -110,18 +111,19 @@ exports.deletePost = async (req, res) => {
   }
 };
 
+
 exports.getFollowingPosts = async (req, res) => {
   try {
     if (!req.user) {
       return res.status(401).json({ error: "Unauthorized: User not found" });
     }
 
-    const posts = await postService.getFollowingPosts(req.data);
+    const posts = await postService.getFollowingPost(req.user); // Ensure correct argument
     res.json(posts);
     console.log(posts);
-    
   } catch (error) {
     console.error("Error fetching following posts:", error);
     res.status(500).json({ error: "Server error" });
   }
 };
+

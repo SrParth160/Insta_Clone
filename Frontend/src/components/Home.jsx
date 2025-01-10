@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { IoMdClose } from "react-icons/io";
 import { FaRegComment } from "react-icons/fa";
+import { MdMood } from "react-icons/md";
+
+
 
 export default function Home() {
   const navigate = useNavigate();
@@ -124,97 +128,90 @@ export default function Home() {
       setItem(post);
     }
   };
+console.log(item);
 
   return (
-    <div className="home">
-      {/* card */}
-      {data.map((post) => {
-        return (
-          <div className="card" key={post._id}>
-            {/* {card Header} */}
-
-            <div className="card-header">
-              <div className="card-pic">
-                <img
-                  src="https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt=""
-                />
+  <main>
+    {data.map((post) => {
+      return (
+          <div className="col-9">
+            <div className="card">
+              {/* Post Header */}
+              <div className="top">
+                <div className="userDetails">
+                  <div className="profilepic">
+                    <div className="profile_img">
+                      <div className="image">
+                        <img src={ post.postedBy.Photo} alt="img8" />
+                      </div>
+                    </div>
+                  </div>
+                  <h3>
+                    <Link to={post.postedBy ? `/profile/${post.postedBy._id}` : "#"} style={{ color: "black" }}>
+                      {post.postedBy ? post.postedBy.name : "Unknown User"}
+                    </Link>
+                    <br />
+                    <span>From Earth</span>
+                  </h3>
+                </div>
+                <div>
+                  <span className="dot">
+                    <i className="fas fa-ellipsis-h"></i>
+                  </span>
+                </div>
               </div>
-              <h5>
-              <Link to={post.postedBy ? `/profile/${post.postedBy._id}` : "#"} style={{ color: "black" }}>
-  {post.postedBy ? post.postedBy.name : "Unknown User"}
-</Link>
-              </h5>
-            </div>
-            {/* {card image} */}
-            <div className="card-image">
-              <img src={post.photo ? post.photo : "currept image"} />
+
+              {/* Post Image */}
+              <div className="imgBx">
+                <img src={post.photo ? post.photo : "corrupt image"} alt="Post" />
+              </div>
+
+              {/* Post Actions */}
+              <div className="bottom">
+                <div className="actionBtns">
+                  <div className="left">
+                    {/* Like Button */}
+                    <div className="heart">
+                      {post.likes.includes(JSON.parse(localStorage.getItem("user"))._id) ? (
+                        <svg onClick={() => unlikePost(post._id)} aria-label="Unlike" color="#ff0000" fill="#ff0000" height="24" role="img" viewBox="0 0 48 48" width="24">
+                          <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3z"></path>
+                        </svg>
+                      ) : (
+                        <svg onClick={() => likePost(post._id)} aria-label="Like" color="#000000" fill="#000000" height="24" role="img" viewBox="0 0 48 48" width="24">
+                          <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3z"></path>
+                        </svg>
+                      )}
+                    </div>
+                    {/* Comment Button */}
+                    <svg onClick={() => toggleComment(post)} aria-label="Comment" color="#000000" fill="" height="24" role="img" viewBox="0 0 48 48" width="24">
+                      <path d="M47.5 46.1l-2.8-11c1.8-3.3 2.8-7.1 2.8-11.1C47.5 11 37 .5 24 .5S.5 11 .5 24 11 47.5 24 47.5c4 0 7.8-1 11.1-2.8l11 2.8c.8.2 1.6-.6 1.4-1.4z"></path>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Likes Count */}
+                <p className="likes">{post.likes.length} likes</p>
+
+                {/* Post Caption */}
+                <p className="message">
+                  <b>{post.body ? post.body : "No caption"}</b>
+                </p>
+
+                {/* Comments Section */}
+                <h4 onClick={() => toggleComment(post)} className="comments">View all {post.comments.length} comments</h4>
+                <h5 className="postTime">2 hours ago</h5>
+
+                {/* Add Comment */}
+                <div className="addComments">
+                
+                  <input class=" text" type="text" placeholder="Add Comment" value={comment} onChange={(e) => setComment(e.target.value)} />
+                  <button className="comment" onClick={() => makeComment(comment, post._id)}>Post</button>
+                </div>
+              </div>
             </div>
 
-            {/* {card content} */}
-            <div className="card-content">
-              {post.likes.includes(
-                JSON.parse(localStorage.getItem("user"))._id
-              ) ? (
-                <span
-                  class="material-symbols-outlined material-symbols-outlined-red"
-                  onClick={() => {
-                    unlikePost(post._id);
-                  }}
-                >
-                  favorite
-                </span>
-              ) : (
-                <span
-                  class="material-symbols-outlined"
-                  onClick={() => {
-                    likePost(post._id);
-                  }}
-                >
-                  favorite
-                </span>
-              )}
-
-              <p>
-                {post.likes.length
-                  ? post.likes.length
-                  : "0"}{" "}
-                likes
-              </p>
-              <p>{post.body ? post.body : "no caption"}</p>
-              <span
-                className="material-symbols-outlined"
-                onClick={() => toggleComment(post)}
-              >
-              <FaRegComment />
-              </span>
-            </div>
-            {/* {add comment} */}
-            <div className="add-comment">
-              <span className="material-symbols-outlined">mood</span>
-              <input
-                type="text"
-                placeholder="Add Comment"
-                value={comment}
-                onChange={(e) => {
-                  setComment(e.target.value);
-                }}
-              />
-              <button
-                className="comment"
-                onClick={() => {
-                  makeComment(comment, post._id);
-                  // toggleComment();
-                }}
-              >
-                post
-              </button>
-            </div>
-          </div>
-        );
-      })}
-
-      {show && (
+            {/* Show Comments Modal */}
+            {show && (
         
         <div className="showComment">
           <div className="container">
@@ -229,7 +226,7 @@ export default function Home() {
               >
                 <div className="card-pic">
                   <img
-                    src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    src={item.postedBy.Photo}
                     alt=""
                   />
                 </div>
@@ -290,11 +287,14 @@ export default function Home() {
             }}
           >
             <span className="material-symbols-outlined material-symbols-outlined-comment">
-              close
+            <IoMdClose />
             </span>
           </div>
         </div>
       )}
-    </div>
-  );
+        </div>
+      );
+    })}
+  </main>
+);
 }

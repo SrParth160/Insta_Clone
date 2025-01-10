@@ -13,7 +13,7 @@ import UserProfile from "./components/UserProfile";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import MyFolliwngPost from "./components/MyFollowingPost";
+import MyFollowingPost from "./components/MyFollowingPost";
 
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/profile" element={<Profile/>}></Route>
           <Route path="/createpost" element={<CreatePost/>}></Route>
           <Route path="/profile/:_id" element={<UserProfile/>}></Route>
-          <Route path="/myfollowingpost" element={<MyFolliwngPost/>}></Route>
+          <Route path="/myfollowingpost" element={<MyFollowingPost/>}></Route>
 
 
  </Routes>

@@ -94,11 +94,21 @@ router.put("/uploadProfilePic", requireLogin, async (req, res) => {
     }
 
     res.json(updatedUser);
-  } catch (err) {
+    } catch (err) {
     console.error("Error updating profile picture:", err);
     res.status(500).json({ error: "Internal server error" });
   }
 });
 
+// router.get("/myfollowingpost", requireLogin, (req, res) => {
+//   POST.find({ postedBy: { $in: req.user.following } })
+//       .populate("postedBy", "_id name")
+//       .populate("comments.postedBy", "_id name")
+//       .then(posts => {
+//           res.json(posts)
+//       })
+//       .catch(err => { console.log(err) })
+      
+// })
 
 module.exports = router;

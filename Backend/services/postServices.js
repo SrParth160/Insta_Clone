@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const POST = require("../models/postModel"); // Ensure this is correct
+const USER = require("../models/userModel"); // Ensure this is correct
 
 exports.getAllPosts = () => {
   return POST.find()
@@ -78,8 +79,27 @@ exports.deletePost = async (postId, userId) => {
   return { message: "Successfully deleted" };
 };
 
-exports.getFollowingPosts = (following) => {
-  return POST.find({ postedBy: { $in: following } })
-    .populate("postedBy", "_id name")
-    .populate("comments.postedBy", "_id name");
+// postService.js
+
+
+exports.getFollowingPost = async (userId) => {
+  try {
+    // Fetch the user's following list
+    const user = await USER.findById(userId).select("following");
+
+    if (!user || !user.following) {
+      return []; // Return an empty array if the user is not found or not following anyone
+    }
+
+    // Fetch posts from users that the current user follows
+    const posts = await POST.find({ postedBy: { $in: user.following } })
+      .populate("postedBy", "_id name")
+      .populate("comments.postedBy", "_id name")
+      .sort("-createdAt");
+
+    return posts;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
+

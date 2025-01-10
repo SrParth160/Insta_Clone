@@ -44,12 +44,12 @@
   
   .close-comment{
     position: fixed;
-    top: 6%;
-    right: 7%;
-    color: rgb(0, 0, 0);
+    right: 3%;
+    top: 5%;
+    margin-top: 3%;
+    color: white;
     border: none;
     cursor: pointer;
-    z-index: 99;
   }
 
   

@@ -5,6 +5,12 @@
   border: 1px solid rgb(173, 173, 173);
   border-radius: 5px;
 }
+.userDetails h3{
+  text-align: justify;
+}
+.heart{
+  display: inline-block;
+}
 .card-header{
   display: flex;
   padding: 10px;
@@ -108,8 +114,9 @@ width: auto;
 
 .close-comment{
   position: fixed;
-  top: 6%;
-  right: 7%;
+  right: 3%;
+top: 5%;
+  margin-top: 3%;
   color: white;
   border: none;
   cursor: pointer;
@@ -155,4 +162,304 @@ p {
   color: #555;
   cursor: pointer;
   margin-top: 5px;
+}
+/* ////////////////////////////// */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: #fafafa;
+}
+
+main {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+main .container {
+  /* position: relative; */
+  margin-top: 80px;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.col-9 {
+  width: auto;
+  margin-top: 10px;
+}
+
+.col-9 .card {
+  margin-bottom: 20px;
+  position: relative;
+  width: auto;
+  /* min-height: 400px; */
+  display: inline-block;
+  border: 1px solid rgba(7, 7, 7, 0.24);
+}
+
+.col-9 .card .top {
+  padding: 10px ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.col-9 .card .bottom {
+  text-align: left;
+  padding: 10px;
+
+    
+}
+
+.col-9 .card .top .userDetails {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.profilepic {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.profilepic .profile_img .image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.profilepic .profile_img img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+}
+
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.col-9 .card .top .userDetails h3 {
+  /* width: 100%; */
+  padding-left: 10px;
+  font-size: 16px;
+  color: #4d4d4f;
+  font-weight: 500;
+  line-height: 1em;
+}
+
+.col-9 .card .top .userDetails h3 span {
+  font-size: 0.75em;
+}
+
+.col-9 .card .top .userDetails h3 span {
+  font-size: 0.75em;
+}
+
+.dot {
+  transform: scale(0.6);
+  cursor: pointer;
+}
+
+.imgBx {
+  position: relative;
+  width: 100%;
+  margin: 10px 0 15px;
+}
+.imgBx img{
+  width: 480px;
+  overflow: hidden;
+}
+
+.actionBtns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actionBtns svg {
+  cursor: pointer;
+}
+.actionBtns .left{
+  display: flex;
+}
+.actionBtns .left svg {
+  margin-right: 8px;
+}
+
+.likes {
+  font-weight: 500;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #4d4d4f;
+}
+
+.message {
+  font-weight: 400;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.5em;
+}
+
+.message b {
+  color: #262626;
+}
+
+.message span {
+  cursor: pointer;
+  color: #1d92ff;
+}
+
+.comments {
+  margin-top: 10px;
+  font-weight: 400;
+  color: #999;
+}
+
+.gallery img{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  object-fit: cover;
+}
+
+.addComments {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  justify-content: space-between;
+}
+
+.addComments a {
+  color: #1d92ffcb;
+  font-weight: 500;
+}
+
+.addComments .reaction {
+  position: relative;
+  font-size: 1.3rem;
+  margin-right: 10px;
+  color: rgb(88, 88, 88);
+}
+
+input.text {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-weight: 400;
+  font-size: 14px;
+  color: #262626;
+  background: none;
+  padding: 10px 0;
+}
+
+input.text::placeholder {
+  color: #777;
+}
+
+.postTime {
+  margin-top: 8px;
+  font-weight: lighter;
+  color: rgb(163, 163, 163);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .col-9 {
+    width: 100%;
+    background: #fafafa;
+  }
+
+  .col-3 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100% !important;
+  }
+
+  .navbar .container {
+    padding: 15px 10px !important;
+  }
+
+  .col-9 {
+    margin-top: 4px;
+    min-width: 100%;
+  }
+
+  .statuses {
+    margin-bottom: 0px;
+  }
+
+  .col-9 .card {
+    margin-bottom: 0px;
+    width: 100%;
+    border: none;
+  }
+
+  .imgBx {
+    position: relative;
+    width: 100%;
+    margin: 10px 0 15px;
+  }
+
+  .searchbar {
+    display: none;
+  }
+}
+
+.footer .footer-section {
+  margin-left: 0.5rem;
+  color: #999999;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.footer a:hover {
+  color: #ff0000;
+}
+
+.input-style {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+  outline: none;
+}
+
+.input-style:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
