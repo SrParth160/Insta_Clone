@@ -1,13 +1,12 @@
 .profile{
     max-width: 600px;
-    margin: 10px auto;
+    margin: 50px auto;
 }
 .profile-pic>img{
    width: 130px;
    height: 130px;
   border-radius: 100px;
   object-fit: cover;
-
 }
 .profile-frame{
     display: flex;
@@ -90,4 +89,73 @@
   .pofile-data h1{
     text-align: left;
     margin: 5px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1px;
+  }
+  
+  .grid__photo {
+    display: block;
+    width: 100%;
+    background: center / cover no-repeat;    
+  }
+  img.grid__photo{
+    object-fit: cover;
+    overflow: hidden;
+    height: 100%;
+  }
+  .box{
+    height: 200px;
+      width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  @media (max-width: 768px) {
+    .box {
+      height: 200px;
+      width: 200px; /* Makes gap dynamic based on screen width */
+    }
+    .App{margin: 33px 0 0 0!important; }
+    .profile-pic>img{
+      width: 120px;
+      height: 120px;
+    }
+  }
+  
+  /* Specific breakpoints for fine-tuned control */
+  @media (max-width: 425px) {
+    .box {
+      height: 140px;
+      width: 140px;
+    }
+    .profile-pic>img{
+      width: 110px;
+      height: 110px;
+    }
+  }
+  
+  @media (max-width: 375px) {
+    .box {
+      height: 125px;
+      width: 125px;
+    }
+    .profile-pic>img{
+      width: 100px;
+      height: 100px;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .box {
+      height: 106px;
+      width: 106px;
+    }
+    .profile-pic>img{
+      width: 90px;
+      height: 90px;
+    }
   }

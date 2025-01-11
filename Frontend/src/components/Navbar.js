@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { LoginContext } from "../context/loginContext";
-import { useNavigate } from "react-router-dom";
 import logo from "../img/logo.png";
 import "./Navbar.css";
 
 export default function Navbar({ login }) {
-  const navigate = useNavigate();
   const { setModalOpen } = useContext(LoginContext);
 
   const loginStatus = () => {
@@ -14,24 +12,28 @@ export default function Navbar({ login }) {
     if (login || token) {
       return (
         <>
-          <li key={"/profile"}>
-            <Link to="/profile" className="navbar-link mobile desktop">
-              Profile
+          <li>
+            <Link to="/profile" className="navbar-link">
+              <span className="desktop-text">Profile</span>
+              <span className="mobile-icon material-icons">person</span>
             </Link>
           </li>
-          <li key={"/createpost"} className="create-center">
-            <Link to="/createpost" className="navbar-link mobile desktop">
-              Create Post
+          <li>
+            <Link to="/createpost" className="navbar-link">
+              <span className="desktop-text">Create Post</span>
+              <span className="mobile-icon material-icons">add_box</span>
             </Link>
           </li>
-          <li key={"/myfollowingpost"}>
-            <Link to="/myfollowingpost" className="navbar-link mobile desktop">
-              Following
+          <li>
+            <Link to="/myfollowingpost" className="navbar-link">
+              <span className="desktop-text">Following</span>
+              <span className="mobile-icon material-icons">favorite</span>
             </Link>
           </li>
-          <li key={"logout"}>
-            <button className="nav-item logout-btn mobile-top desktop" onClick={() => setModalOpen(true)}>
-              Logout
+          <li>
+            <button className="nav-item logout-btn" onClick={() => setModalOpen(true)}>
+              <span className="desktop-text">Logout</span>
+              <span className="mobile-icon material-icons">logout</span>
             </button>
           </li>
         </>
@@ -39,14 +41,16 @@ export default function Navbar({ login }) {
     } else {
       return (
         <>
-          <li key={"/signup"}>
-            <Link to="/signup" className="navbar-link mobile desktop">
-              Sign Up
+          <li>
+            <Link to="/signup" className="navbar-link">
+              <span className="desktop-text">Sign Up</span>
+              <span className="mobile-icon material-icons">person_add</span>
             </Link>
           </li>
-          <li key={"/login"}>
-            <Link to="/login" className="navbar-link mobile desktop">
-              Login
+          <li>
+            <Link to="/login" className="navbar-link">
+              <span className="desktop-text">Login</span>
+              <span className="mobile-icon material-icons">login</span>
             </Link>
           </li>
         </>
@@ -62,53 +66,46 @@ export default function Navbar({ login }) {
           <Link to="/Home" className="navbar-logo">
             <img src={logo} alt="Logo" className="logo" />
           </Link>
-          <ul className="navbar-links">
-            {loginStatus()}
-          </ul>
+          <ul className="navbar-links">{loginStatus()}</ul>
         </div>
       </nav>
 
-      {/* Mobile Top Navbar - Logo Left, Logout Right */}
+      {/* Mobile Top Navbar (Only Logo and Logout) */}
       <nav className="navbar mobile-top-navbar">
         <Link to="/Home" className="navbar-logo">
           <img src={logo} alt="Logo" className="logo" />
         </Link>
-        <button className="nav-item logout-btn mobile-top" onClick={() => setModalOpen(true)}>
+        <button className="logout-btn" onClick={() => setModalOpen(true)}>
           <span className="material-icons">logout</span>
         </button>
       </nav>
 
-      {/* Mobile Bottom Navbar - Home, Search, Create (Center), Following, Profile */}
+      {/* Mobile Bottom Navbar */}
       <nav className="navbar mobile-navbar">
         <ul className="navbar-links">
           <li>
-            <Link to="/" className="navbar-link">
-              <span className="material-icons">home</span>
-              <span>Home</span>
+            <Link to="/Home" className="navbar-link">
+              <span className="mobile-icon material-icons">home</span>
             </Link>
           </li>
           <li>
             <Link to="/search" className="navbar-link">
-              <span className="material-icons">search</span>
-              <span>Search</span>
+              <span className="mobile-icon material-icons">search</span>
             </Link>
           </li>
           <li>
             <Link to="/createpost" className="navbar-link">
-              <span className="material-icons">add_box</span>
-              <span>Create</span>
+              <span className="mobile-icon material-icons">add_box</span>
             </Link>
           </li>
           <li>
             <Link to="/myfollowingpost" className="navbar-link">
-              <span className="material-icons">favorite</span>
-              <span>Following</span>
+              <span className="mobile-icon material-icons">favorite</span>
             </Link>
           </li>
           <li>
             <Link to="/profile" className="navbar-link">
-              <span className="material-icons">person</span>
-              <span>Profile</span>
+              <span className="mobile-icon material-icons">person</span>
             </Link>
           </li>
         </ul>
