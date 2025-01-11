@@ -6,8 +6,8 @@ body {
   padding-bottom: 60px; /* Prevent navbar overlap on mobile */
 }
 
-/* Navbar */
-.navbar {
+/* Desktop Navbar */
+.desktop-navbar {
   width: 100%;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -47,6 +47,15 @@ body {
   padding: 0;
 }
 
+/* Desktop Styles */
+.desktop {
+  display: flex;
+}
+
+.mobile {
+  display: none;
+}
+
 .navbar-link {
   text-decoration: none;
   color: #333;
@@ -58,67 +67,130 @@ body {
   transition: color 0.3s ease;
 }
 
-.navbar-link .material-icons {
-  font-size: 24px;
+/* Desktop View - Show Text Instead of Icons */
+.desktop .material-icons {
+  display: none;
 }
 
 .navbar-link:hover {
   color: #0095f6;
 }
 
-/* Logout Button */
-.logout-btn {
-  border: none;
-  background: none;
-  cursor: pointer;
+/* Mobile Top Navbar (Logo Left, Logout Right) */
+.mobile-top-navbar {
+  display: none;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
 }
 
-.logout-btn:hover {
-  color: #0095f6;
+.mobile-top-navbar .logout-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-/* Responsive Design */
+/* Mobile Bottom Navbar */
+.mobile-navbar {
+  display: none;
+}
+
+/* Mobile View Styles */
 @media (max-width: 768px) {
-  .navbar {
-    position: fixed;
-    bottom: 0;
-    top: unset;
-    border-top: 1px solid #ddd;
-    border-bottom: none;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  .navbar-container {
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-  }
-
-  .navbar-links {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-  }
-
-  .nav-text {
+  /* Hide desktop navbar */
+  .desktop-navbar {
     display: none;
   }
 
-  .navbar-link {
+  /* Show mobile top navbar */
+  .mobile-top-navbar {
+    display: flex;
+  }
+
+  /* Show mobile bottom navbar */
+  .mobile-navbar {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    padding: 12px 0;
+    justify-content: space-between;  /* Adjusted to make items spread */
+  }
+
+  /* Hide text and show only icons */
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-link {
     font-size: 14px;
   }
 
   .navbar-link .material-icons {
     font-size: 28px;
+  }
+
+  /* Center the Create button */
+  .create-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Hide Text in Mobile (Show Only Icons) */
+  .navbar-link span {
+    display: block;
+  }
+}
+
+/* Desktop View - Show All Links (Home, Create, Following, Profile) */
+@media (min-width: 769px) {
+  /* Show all the desktop navbar items */
+  .desktop-navbar {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: flex;
+    justify-content: space-between; /* Spacing out menu items */
+    gap: 20px;
+  }
+
+  .mobile-top-navbar {
+    display: none;
+  }
+
+  .mobile-navbar {
+    display: none;
+  }
+
+  /* Adjust the layout for the menu items */
+  .navbar-links li {
+    flex: 1; /* Spread the links across */
+    text-align: center; /* Center align text for each navbar item */
+  }
+
+  /* Make sure text labels are visible in desktop mode */
+  .navbar-link .material-icons {
+    display: none; /* Hide icons in desktop */
   }
 }

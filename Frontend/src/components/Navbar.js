@@ -15,27 +15,23 @@ export default function Navbar({ login }) {
       return (
         <>
           <li key={"/profile"}>
-            <Link to="/profile" className="navbar-link">
-              <span className="material-icons">person</span>
-              <span className="nav-text">Profile</span>
+            <Link to="/profile" className="navbar-link mobile desktop">
+              Profile
             </Link>
           </li>
-          <li key={"/createpost"}>
-            <Link to="/createpost" className="navbar-link">
-              <span className="material-icons">add_box</span>
-              <span className="nav-text">Create</span>
+          <li key={"/createpost"} className="create-center">
+            <Link to="/createpost" className="navbar-link mobile desktop">
+              Create Post
             </Link>
           </li>
           <li key={"/myfollowingpost"}>
-            <Link to="/myfollowingpost" className="navbar-link">
-              <span className="material-icons">favorite</span>
-              <span className="nav-text">Following</span>
+            <Link to="/myfollowingpost" className="navbar-link mobile desktop">
+              Following
             </Link>
           </li>
           <li key={"logout"}>
-            <button className="nav-item logout-btn" onClick={() => setModalOpen(true)}>
-              <span className="material-icons">logout</span>
-              <span className="nav-text">Logout</span>
+            <button className="nav-item logout-btn mobile-top desktop" onClick={() => setModalOpen(true)}>
+              Logout
             </button>
           </li>
         </>
@@ -44,15 +40,13 @@ export default function Navbar({ login }) {
       return (
         <>
           <li key={"/signup"}>
-            <Link to="/signup" className="navbar-link">
-              <span className="material-icons">person_add</span>
-              <span className="nav-text">Sign Up</span>
+            <Link to="/signup" className="navbar-link mobile desktop">
+              Sign Up
             </Link>
           </li>
           <li key={"/login"}>
-            <Link to="/login" className="navbar-link">
-              <span className="material-icons">login</span>
-              <span className="nav-text">Log In</span>
+            <Link to="/login" className="navbar-link mobile desktop">
+              Login
             </Link>
           </li>
         </>
@@ -61,27 +55,64 @@ export default function Navbar({ login }) {
   };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
+    <>
+      {/* Desktop Navbar */}
+      <nav className="navbar desktop-navbar">
+        <div className="navbar-container">
+          <Link to="/Home" className="navbar-logo">
+            <img src={logo} alt="Logo" className="logo" />
+          </Link>
+          <ul className="navbar-links">
+            {loginStatus()}
+          </ul>
+        </div>
+      </nav>
+
+      {/* Mobile Top Navbar - Logo Left, Logout Right */}
+      <nav className="navbar mobile-top-navbar">
         <Link to="/Home" className="navbar-logo">
           <img src={logo} alt="Logo" className="logo" />
         </Link>
+        <button className="nav-item logout-btn mobile-top" onClick={() => setModalOpen(true)}>
+          <span className="material-icons">logout</span>
+        </button>
+      </nav>
+
+      {/* Mobile Bottom Navbar - Home, Search, Create (Center), Following, Profile */}
+      <nav className="navbar mobile-navbar">
         <ul className="navbar-links">
           <li>
-            <Link to="/Home" className="navbar-link">
+            <Link to="/" className="navbar-link">
               <span className="material-icons">home</span>
-              <span className="nav-text">Home</span>
+              <span>Home</span>
             </Link>
           </li>
           <li>
             <Link to="/search" className="navbar-link">
               <span className="material-icons">search</span>
-              <span className="nav-text">Search</span>
+              <span>Search</span>
             </Link>
           </li>
-          {loginStatus()}
+          <li>
+            <Link to="/createpost" className="navbar-link">
+              <span className="material-icons">add_box</span>
+              <span>Create</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/myfollowingpost" className="navbar-link">
+              <span className="material-icons">favorite</span>
+              <span>Following</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/profile" className="navbar-link">
+              <span className="material-icons">person</span>
+              <span>Profile</span>
+            </Link>
+          </li>
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }
