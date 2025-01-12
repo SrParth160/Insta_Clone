@@ -16,30 +16,30 @@ export default function CreatePost() {
   useEffect(() => {
     // saving post to mongodb
     if (url) {
-    fetch("http://localhost:5000/api/post/createPost", {
+      fetch("http://localhost:5000/api/post/createPost", {
         method: "post",
         headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("jwt"),
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
         body: JSON.stringify({
-            body,
-            photo: url, // Ensure the key matches the server-side code
+          body,
+          photo: url, // Ensure the key matches the server-side code
         }),
-    })
-    .then((res) => res.json())
-    .then((data) => {
-        if (data.error) {
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.error) {
             notifyERR(data.error);
-        } else {
+          } else {
             notifySUC("Post created successfully");
-        }
-    })
-    .catch((err) => {
-        console.error("Error:", err);
-    });
-}
-}, [url]);
+          }
+        })
+        .catch((err) => {
+          console.error("Error:", err);
+        });
+    }
+  }, [url]);
 
   // posting image to cloudinary
 
@@ -67,60 +67,77 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="createPost">
+    <div className="card" style={{backgroundColor:"#E9EEF1"}}>
       {/* header */}
-      <div className="post-header">
-        <h4 style={{ margin: "3px auto" }}>Create New Post</h4>
-        <button
-          id="post-btn"
-          onClick={() => {
-            postDetails();
-          }}
-        >
-          Share
-        </button>
+      <div
+        className="card-header"
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <>
+          <h4 style={{ margin: "1px", alignItems: "left" }}>Create New Post</h4>
+        </>
+        <>
+          <button
+            class="card__btn"
+            id="post-btn"
+            onClick={() => {
+              postDetails();
+            }}
+          >
+            Post
+          </button>
+        </>
       </div>
-      {/* image preview */}
-      <div className="main-div">
-        <img
-          id="output"
-          src="https://static.thenounproject.com/png/11204-200.png"
-        />
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(event) => {
-            loadfile(event);
-            setImage(event.target.files[0]);
-          }}
-        />
-      </div>
-      {/* details  */}
-      <div className="details">
-        <div className="card-header">
-          <div className="card-pic">
-            <div className="card-header">
-              <div>
-                <img
-                  src={JSON.parse(localStorage.getItem("user")).Photo}
-                  alt=""
-                />
-              </div>
-              <h5>{JSON.parse(localStorage.getItem("user")).name}</h5>
+      <div className="card">
+        {/* image preview */}
+        <div className="card__hero">
+          <img
+            id="output"
+            src="https://miro.medium.com/v2/resize:fit:250/1*DSNfSDcOe33E2Aup1Sww2w.jpeg"
+          />
+          <input
+
+            type="file"
+            accept="image/*"
+            onChange={(event) => {
+              loadfile(event);
+              setImage(event.target.files[0]);
+            }}
+          />
+        </div>
+        {/* details  */}
+        <footer class="card__footer">
+          <div class="card__job-summary">
+            <div class="card__job-icon card-pic">
+              <img
+                src={JSON.parse(localStorage.getItem("user")).Photo}
+                alt=""
+              />
             </div>
-            <textarea
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-              type="text"
-              placeholder="Write A Caption"
-              name=""
-              id=""
-            ></textarea>
+            <div class="card__job">
+              <p class="card__job-title">
+                {JSON.parse(localStorage.getItem("user")).name}
+                
+              </p>
+            </div>
+          </div>
+        </footer>
+        <div class="container_chat_bot">
+          <div class="container-chat-options">
+            <div class="chat">
+              <div class="chat-bot">
+                <textarea
+                  value={body}
+                  onChange={(e) => setBody(e.target.value)}
+                  id="chat_bot"
+                  name="chat_bot"
+                  placeholder="Type Something...✦˚"
+                ></textarea>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-
