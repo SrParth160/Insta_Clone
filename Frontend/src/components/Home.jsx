@@ -4,15 +4,14 @@ import "./Home.css";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
-import { FaRegComment } from "react-icons/fa";
 import { MdMood } from "react-icons/md";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoMdHeart } from "react-icons/io";
 import { BsChat } from "react-icons/bs";
 
 export default function Home() {
-  const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
   const [comment, setComment] = useState("");
   const [show, setShow] = useState(false);
   const [item, setItem] = useState([]);
@@ -128,11 +127,10 @@ export default function Home() {
       setItem(post);
     }
   };
-  console.log(item);
 
   return (
-    <main>
-      {data.map((post) => {
+    <div className="home">
+      {data.map( post => {
         return (
           <div className="col-9">
             <div className="card">
@@ -349,6 +347,6 @@ export default function Home() {
           </div>
         );
       })}
-    </main>
+    </div>
   );
 }

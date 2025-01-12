@@ -11,6 +11,8 @@ export default function Modal( ) {
     setModalOpen(false);
     localStorage.clear();
     navigate("/login");
+    window.location.reload();
+
   }
   return (
     <div className="darkBg" onClick={() => setModalOpen(false)}>

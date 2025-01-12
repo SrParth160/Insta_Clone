@@ -1,12 +1,13 @@
 .darkBg{
     background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
     width: 100vw;
     height: 100vh;
     z-index: 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    position: absolute;
+    /* position: absolute; */
 }
 .centered{
     position: fixed;
@@ -122,8 +123,4 @@
     box-shadow: none;
     transform: translateY(-5px);
     
-  }
-
-  .darkBg1{
-    background-color: #ff3e4e;
   }

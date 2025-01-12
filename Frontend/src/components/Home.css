@@ -1,3 +1,6 @@
+.home{
+  margin: 45px 0 0 0 ;
+}
 .showComment{
   top: 50;
   left: 50;
@@ -157,13 +160,13 @@ body {
   background: #fafafa;
 }
 
-main {
+.Home {
   width: 100%;
   align-items: center;
   justify-content: center;
 }
 
-main .container {
+.Home .container {
   /* position: relative; */
   margin-top: 80px;
   width: 50%;
@@ -500,11 +503,17 @@ a {
   .card {
     max-width: 90vw;
   }
+  .home{
+    margin: 35px 0 0 0 ;
+  }
 }
 
 @media (max-width: 425px) {
   .card {
     max-width: 95vw;
+  }
+  .home{
+    margin: 25px 0 0 0 ;
   }
 }
 .card {
@@ -685,7 +694,6 @@ h3 {
 .post-caption {
   padding: 0 10px 10px;
 }
-
 @media (max-width: 425px) {
   .card {
     max-width: 95vw;
@@ -704,6 +712,7 @@ h3 {
   left: 0;
 
 }
+
 }
 
 .showComment {
@@ -713,7 +722,7 @@ h3 {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
-  max-width: 500px;
+  min-width: 500px;
   border-radius: 10px;
   padding: 15px;
   z-index: 1000;
