@@ -24,7 +24,7 @@ export default function PostDetail({ item, toggleDetails }) {
   };
   return (
     <div className="showComment">
-      <div className="container">
+      <div className="commentContainer">
         <div className="postPic">
           <img src={item.photo} alt="" />
         </div>

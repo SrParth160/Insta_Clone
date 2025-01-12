@@ -80,11 +80,11 @@ console.log(user.Photo);
       {/* Gallery */}
       <div className="grid">
         {pic.map((pics) => {
-          return <box className="box" ><img className="grid__photo item" key={pics._id} src={pics.photo}
+          return <div className="box" ><img className="grid__photo item" key={pics._id} src={pics.photo}
             onClick={() => {
               toggleDetails(pics)
             }}
-            ></img></box>
+            ></img></div>
         })}
       </div>
       {show &&

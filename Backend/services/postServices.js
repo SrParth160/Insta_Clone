@@ -5,7 +5,7 @@ const USER = require("../models/userModel"); // Ensure this is correct
 exports.getAllPosts = () => {
   return POST.find()
     .populate("postedBy", "_id name Photo")
-    .populate("comments.postedBy", "_id name email userName")
+    .populate("comments.postedBy", "_id name email userName Photo")
     .sort("-createdAt");
 };
 
@@ -22,15 +22,15 @@ exports.createPost = ({ body, photo, user }) => {
     .then((savedPost) =>
       POST.findById(savedPost._id).populate(
         "postedBy",
-        "_id name userName email"
+        "_id name userName email Photo"
       )
     );
 };
 
 exports.getMyPosts = (userId) => {
   return POST.find({ postedBy: userId })
-    .populate("postedBy", "_id name userName email")
-    .populate("comments.postedBy", "_id name userName email")
+    .populate("postedBy", "_id name userName email Photo")
+    .populate("comments.postedBy", "_id name userName email Photo")
     .sort("-createdAt");
 };
 
@@ -93,8 +93,8 @@ exports.getFollowingPost = async (userId) => {
 
     // Fetch posts from users that the current user follows
     const posts = await POST.find({ postedBy: { $in: user.following } })
-      .populate("postedBy", "_id name")
-      .populate("comments.postedBy", "_id name")
+      .populate("postedBy", "_id name Photo")
+      .populate("comments.postedBy", "_id name Photo")
       .sort("-createdAt");
 
     return posts;

@@ -1,3 +1,10 @@
+.showComment{
+  top: 50;
+  left: 50;
+  background-color: rgba(16, 13, 13, 0);
+  width: 100%;
+  
+}
 .card{
   max-width: 500px;
   height: max-content;
@@ -11,13 +18,15 @@
 .heart{
   display: inline-block;
 }
+
 .card-header{
   display: flex;
-  padding: 10px;
+  margin: 0;
+  padding: 11px 0 11px 0px;
 }
 .card-header > h5{
   margin: 0;
-  padding: 11px;
+  padding: 11 0 11 0px;
 }
 .card-image img{
 width: auto;
@@ -27,6 +36,7 @@ width: auto;
   border-radius: 20px;
   object-fit: cover;
 }
+
 .card-content{
   text-align: left;
   line-height: 4px;
@@ -54,7 +64,7 @@ width: auto;
   background-color: none;
   font-weight: bolder;
   cursor: pointer;
-  color: rgb(42, 42, 255);
+  color: rgb(84, 101, 255);
 }
 .material-symbols-outlined-red{
   color: red;
@@ -69,36 +79,6 @@ width: auto;
   cursor: pointer;
 }
 
-.showComment{
-  width: 100vw;
-  min-height:100vh ;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(16, 13, 13, 0.4);
-  
-}
-
-.container{
-  display: flex;
-  width: 80%;
-  background-color: white;
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  height: 500px;
-}
-
-.postPic{
-  background-color: black;
-  display: flex;
-  align-items: center;
-}
-
-.postPic img{
-  object-fit: contain;
-  width: 100%;
-}
 
 .details{
   width: 100%;
@@ -260,7 +240,7 @@ main .container {
 
 .col-9 .card .top .userDetails h3 {
   /* width: 100%; */
-  padding-left: 10px;
+  padding-left: 5px;
   font-size: 16px;
   color: #4d4d4f;
   font-weight: 500;
@@ -478,14 +458,7 @@ a {
 .card-header {
   display: flex;
   align-items: center;
-  padding: 10px;
-}
-
-.card-header img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
+  padding:7px 10px;
 }
 
 .card-header h3 {
@@ -563,7 +536,7 @@ a {
 }
 
 h3 {
-  margin-left: 10px;
+  margin-left: 5px;
   font-size: 16px;
   font-weight: 600;
 }
@@ -718,14 +691,7 @@ h3 {
     max-width: 95vw;
     box-shadow: none;
   }
-.showComment{
-  width: 420px;
-  
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(16, 13, 13, 0.4);
-}
+
 }
 @media (max-width: 320px) {
   .card {
@@ -736,6 +702,177 @@ h3 {
   width: 300px;
   top: 0;
   left: 0;
-  background-color: rgba(16, 13, 13, 0.4);
+
 }
+}
+
+.showComment {
+  border: 1px solid #ddd;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+  border-radius: 10px;
+  padding: 15px;
+  z-index: 1000;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.commentContainer{
+  border-radius: 10px;
+  border: 1px solid #888;
+  display: flex;
+  width: 80%;
+  background-color: rgb(241, 241, 241);
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+.postPic img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.card-pic img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comment-section {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-bottom: 10px;
+}
+
+.comm {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.card-content p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.add-comment {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.add-comment input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+}
+
+.add-comment .comment {
+  background: #0095f6;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.close-comment {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .showComment {
+    width: 95%;
+    max-width: 400px;
+    padding: 10px;
+  }
+
+  .card-pic img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .add-comment input {
+    font-size: 12px;
+  }
+
+  .add-comment .comment {
+    font-size: 12px;
+    padding: 3px 7px;
+  }
+}
+.showComment {
+  min-height:80vh ;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  min-width: 500px;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  padding: 15px;
+  z-index: 1001;  /* Higher than the blur effect */
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  visibility: visible;  /* Ensure it's visible */
+}
+
+/* Background Blur Effect */
+.modal-overlay {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1;  /* Below the modal */
+  /* display: block; */
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .showComment {
+    width: 95%;
+    /* max-width: 400px; */
+    padding: 10px;
+  }
 }
