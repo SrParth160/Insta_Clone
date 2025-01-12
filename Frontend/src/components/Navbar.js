@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { LoginContext } from "../context/loginContext";
 import logo from "../img/logo.png";
@@ -6,27 +6,6 @@ import "./Navbar.css";
 
 export default function Navbar({ login }) {
   const { setModalOpen } = useContext(LoginContext);
-  const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        // Scrolling Down - Hide Navbar
-        setVisible(false);
-      } else {
-        // Scrolling Up - Show Navbar
-        setVisible(true);
-      }
-      setLastScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastScrollY]);
-
 
   const loginStatus = () => {
     const token = localStorage.getItem("jwt");
@@ -102,7 +81,7 @@ export default function Navbar({ login }) {
       </nav>
 
       {/* Mobile Bottom Navbar */}
-      <nav className="navbar mobile-navbar ">
+      <nav className="navbar mobile-navbar">
         <ul className="navbar-links">
           <li>
             <Link to="/Home" className="navbar-link">
@@ -131,9 +110,6 @@ export default function Navbar({ login }) {
           </li>
         </ul>
       </nav>
-      
     </>
-    
   );
-  
 }

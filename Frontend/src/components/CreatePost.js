@@ -67,7 +67,7 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="card" style={{backgroundColor:"#E9EEF1"}}>
+    <div className="card1" style={{backgroundColor:"#E9EEF1"}}>
       {/* header */}
       <div
         className="card-header"
@@ -88,7 +88,7 @@ export default function CreatePost() {
           </button>
         </>
       </div>
-      <div className="card">
+      <div className="card1">
         {/* image preview */}
         <div className="card__hero">
           <img

@@ -8,12 +8,15 @@
   width: 100%;
   
 }
-.card{
-  max-width: 500px;
-  height: max-content;
-  margin: 25px auto;
-  border: 1px solid rgb(173, 173, 173);
-  border-radius: 5px;
+@media screen and (max-width: 2000px){
+
+  .card{
+    min-width: 500px;
+    height: max-content;
+    margin: 25px auto;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 5px;
+  }
 }
 .userDetails h3{
   text-align: justify;
@@ -447,15 +450,6 @@ a {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.card {
-  width: 100%;
-  max-width: 500px; /* Limit width for larger screens */
-  margin: 10px auto;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
 
 /* User Info (Top Section) */
 .card-header {
@@ -722,7 +716,7 @@ h3 {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
-  min-width: 500px;
+  width: 500px;
   border-radius: 10px;
   padding: 15px;
   z-index: 1000;
@@ -825,7 +819,6 @@ h3 {
 /* Mobile Responsive */
 @media (max-width: 600px) {
   .showComment {
-    width: 95%;
     max-width: 400px;
     padding: 10px;
   }
@@ -850,8 +843,7 @@ h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  min-width: 500px;
+  width: 500px;
   backdrop-filter: blur(5px);
   border-radius: 10px;
   padding: 15px;
@@ -880,8 +872,7 @@ h3 {
 /* Mobile Responsive */
 @media (max-width: 600px) {
   .showComment {
-    width: 95%;
-    /* max-width: 400px; */
+    max-width: 400px;
     padding: 10px;
   }
 }
