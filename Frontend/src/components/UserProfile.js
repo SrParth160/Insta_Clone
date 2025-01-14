@@ -3,13 +3,23 @@ import PostDetail from "./PostDetail";
 import "./Profile.css";
 import { useParams } from "react-router-dom";
 
+
 export default function UserProfie() {
   var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png";
   const { _id } = useParams();
   const [isFollow, setIsFollow] = useState(false);
   const [user, setUser] = useState("");
   const [posts, setPosts] = useState([]);
+    const [show, setShow] = useState(false)
   
+    const toggleDetails = (posts) => {
+      if (show) {
+        setShow(false);
+      } else {
+        setShow(true);
+        setPosts(posts);
+      }
+    };
 
   // to follow user
   const followUser = (_id) => {
@@ -123,23 +133,22 @@ export default function UserProfie() {
         }}
       />
       {/* Gallery */}
-      <div className="gallery">
+      <div className="grid">
         {posts.map((pics) => {
           return (
-            <img
+            <div className="box">
+            <img 
               key={pics._id}
               src={pics.photo}
-              // onClick={() => {
-              //     toggleDetails(pics)
-              // }}
-              className="item"
-            ></img>
+              className="grid__photo"
+              alt="post"/>
+      </div>
+           
           );
         })}
       </div>
-      {/* {show &&
-        <PostDetail item={posts} toggleDetails={toggleDetails} />
-      } */}
+       
+           
     </div>
   );
 }

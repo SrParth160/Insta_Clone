@@ -1,122 +1,136 @@
-.home{
-  margin: 45px 0 0 0 ;
-}
-.showComment{
-  top: 50;
-  left: 50;
-  background-color: rgba(16, 13, 13, 0);
-  width: 100%;
-  
-}
-@media screen and (max-width: 2000px){
-
-  .card{
-    min-width: 500px;
-    height: max-content;
-    margin: 25px auto;
-    border: 1px solid rgb(173, 173, 173);
-    border-radius: 5px;
-  }
-}
-.userDetails h3{
-  text-align: justify;
-}
-.heart{
-  display: inline-block;
+.card {
+  max-width: 500px;
+  height: max-content;
+  margin: 25px auto;
+  border: 1px solid rgb(173, 173, 173);
+  border-radius: 5px;
 }
 
-.card-header{
+.card-header {
   display: flex;
-  margin: 0;
-  padding: 11px 0 11px 0px;
-}
-.card-header > h5{
-  margin: 0;
-  padding: 11 0 11 0px;
-}
-.card-image img{
-width: auto;
-}
-.card-pic img{
-  width: 30px;
-  border-radius: 20px;
-  object-fit: cover;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
 }
 
-.card-content{
+.card-header > h5 {
+  margin: 0;
+  padding: 11px;
+}
+
+.profile_img img {
+  width: 40px;
+  border-radius: 30px;
+  height: 40px;
+  object-fit: cover;
+  padding: 5px;
+}
+
+.card-content {
   text-align: left;
   line-height: 4px;
   padding: 3px 10px;
-  border: 1px solid rgb(173, 173, 173);
-}
-.card-image img{
-  width: 500px;
+  border-bottom: 1px solid rgb(173, 173, 173);
 }
 
-.add-comment{
+.container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.add-comment input{
-  margin: 0;
-  outline: none;
-  border: none;
-  padding: 10px;
+  width: 80%;
+  background-color: white;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  height: 500px;
 }
 
-.comment{
-  border: none;
-  background-color: none;
-  font-weight: bolder;
-  cursor: pointer;
-  color: rgb(84, 101, 255);
-}
-.material-symbols-outlined-red{
-  color: red;
-  font-variation-settings:
-  'FILL' 1,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
-
-}
-.material-symbols-outlined{
-  cursor: pointer;
+.postPic img {
+  object-fit: contain;
+  width: 100%;
 }
 
-
-.details{
+.details {
   width: 100%;
   height: inherit;
   display: flex;
   flex-direction: column;
 }
 
-.comment-section{
+.comment-section {
   flex-grow: 4;
   text-align: left;
   margin-left: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-bottom: 10px;
 }
 
-.close-comment{
+.home {
+  margin: 45px 0 0 0;
+}
+
+.userDetails h3 {
+  text-align: justify;
+}
+.heart {
+  display: inline-block;
+}
+
+.card-header {
+  display: flex;
+  margin: 0;
+  padding: 11px 0 11px 0px;
+}
+.card-header > h5 {
+  margin: 0;
+  padding: 11 0 11 0px;
+}
+
+.card-pic img {
+  width: 30px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.card-content {
+  text-align: left;
+  line-height: 4px;
+  padding: 3px 10px;
+  border: 1px solid rgb(173, 173, 173);
+}
+
+.add-comment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add-comment input {
+  margin: 0;
+  outline: none;
+  border: none;
+  padding: 10px;
+}
+
+.comment {
+  border: none;
+  background-color: none;
+  font-weight: bolder;
+  cursor: pointer;
+  color: rgb(84, 101, 255);
+}
+
+.close-comment {
   position: fixed;
   right: 3%;
-top: 5%;
+  top: 5%;
   margin-top: 3%;
   color: white;
   border: none;
   cursor: pointer;
 }
 
-
 .material-symbols-outlined-comment {
   font-size: 50px;
-font-variation-settings:
-'FILL' 0,
-'wght' 700,
-'GRAD' 0,
-'opsz' 48
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
 }
 
 .card-content {
@@ -151,11 +165,6 @@ p {
   margin-top: 5px;
 }
 /* ////////////////////////////// */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 body {
   font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu,
@@ -168,15 +177,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-.Home .container {
-  /* position: relative; */
-  margin-top: 80px;
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
-}
-
 .col-9 {
   width: auto;
   margin-top: 10px;
@@ -192,7 +192,7 @@ body {
 }
 
 .col-9 .card .top {
-  padding: 7px ;
+  padding: 7px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -201,8 +201,6 @@ body {
 .col-9 .card .bottom {
   text-align: left;
   padding: 10px;
-
-    
 }
 
 .col-9 .card .top .userDetails {
@@ -214,25 +212,6 @@ body {
 .profilepic {
   display: inline-block;
   cursor: pointer;
-}
-
-.profilepic .profile_img .image {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid white;
-}
-
-.profilepic .profile_img img {
-  height: 50px;
-  width: 50px;
-  object-fit: cover;
 }
 
 .cover {
@@ -266,15 +245,6 @@ body {
   cursor: pointer;
 }
 
-.imgBx {
-  position: relative;
-  width: 100%;
-}
-.imgBx img{
-  width: 480px;
-  overflow: hidden;
-}
-
 .actionBtns {
   display: flex;
   justify-content: space-between;
@@ -284,7 +254,7 @@ body {
 .actionBtns svg {
   cursor: pointer;
 }
-.actionBtns .left{
+.actionBtns .left {
   display: flex;
 }
 .actionBtns .left svg {
@@ -315,13 +285,7 @@ body {
   color: #1d92ff;
 }
 
-.comments {
-  margin-top: 10px;
-  font-weight: 400;
-  color: #999;
-}
-
-.gallery img{
+.gallery img {
   display: flex;
   align-items: center;
   margin-top: 10px;
@@ -379,52 +343,6 @@ a {
   display: none;
 }
 
-@media screen and (max-width: 1000px) {
-  .col-9 {
-    width: 100%;
-    background: #fafafa;
-  }
-
-  .col-3 {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .container {
-    width: 100% !important;
-  }
-
-  .navbar .container {
-    padding: 15px 10px !important;
-  }
-
-  .col-9 {
-    margin-top: 4px;
-    min-width: 100%;
-  }
-
-  .statuses {
-    margin-bottom: 0px;
-  }
-
-  .col-9 .card {
-    margin-bottom: 0px;
-    width: 100%;
-    border: none;
-  }
-
-  .imgBx {
-    position: relative;
-    width: 100%;
-    margin: 10px 0 15px;
-  }
-
-  .searchbar {
-    display: none;
-  }
-}
-
 .footer .footer-section {
   margin-left: 0.5rem;
   color: #999999;
@@ -450,36 +368,16 @@ a {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-
 /* User Info (Top Section) */
 .card-header {
   display: flex;
   align-items: center;
-  padding:7px 10px;
+  padding: 7px 10px;
 }
 
 .card-header h3 {
   font-size: 16px;
   margin: 0;
-}
-
-/* Post Image */
-.card-image img {
-  width: 100%;
-  display: block;
-  border-radius: 0;
-}
-
-/* Post Actions */
-.card-actions {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 15px;
-}
-
-.card-actions .material-icons {
-  font-size: 24px;
-  cursor: pointer;
 }
 
 /* Caption & Comments */
@@ -493,31 +391,6 @@ a {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .card {
-    max-width: 90vw;
-  }
-  .home{
-    margin: 35px 0 0 0 ;
-  }
-}
-
-@media (max-width: 425px) {
-  .card {
-    max-width: 95vw;
-  }
-  .home{
-    margin: 25px 0 0 0 ;
-  }
-}
-.card {
-  width: 100%;
-  max-width: 500px;
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
-  overflow: hidden;
-}
 
 .top {
   display: flex;
@@ -531,21 +404,10 @@ a {
   align-items: center;
 }
 
-.profilepic .profile_img .image img {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
 h3 {
   margin-left: 5px;
   font-size: 16px;
   font-weight: 600;
-}
-
-.imgBx {
-  width: 100%;
 }
 
 .imgBx img {
@@ -688,29 +550,12 @@ h3 {
 .post-caption {
   padding: 0 10px 10px;
 }
-@media (max-width: 425px) {
-  .card {
-    max-width: 95vw;
-    box-shadow: none;
-  }
-
-}
-@media (max-width: 320px) {
-  .card {
-    max-width: 95vw;
-    box-shadow: none;
-  }
-.showComment{
-  width: 300px;
-  top: 0;
-  left: 0;
-
-}
-
-}
-
 .showComment {
-  border: 1px solid #ddd;
+  z-index: 1001; /* Higher than the blur effect */
+  visibility: visible; /* Ensure it's visible */
+}
+.showComment {
+  min-height: 80vh;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -726,7 +571,7 @@ h3 {
   flex-direction: column;
 }
 
-.commentContainer{
+.commentContainer {
   border-radius: 10px;
   border: 1px solid #888;
   display: flex;
@@ -746,30 +591,11 @@ h3 {
   border-radius: 10px;
 }
 
-.details {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 10px;
-}
-
 .card-pic img {
   width: 35px;
   height: 35px;
   border-radius: 50%;
   object-fit: cover;
-}
-
-.comment-section {
-  max-height: 200px;
-  overflow-y: auto;
-  padding-bottom: 10px;
 }
 
 .comm {
@@ -807,15 +633,6 @@ h3 {
   cursor: pointer;
 }
 
-.close-comment {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-
 /* Mobile Responsive */
 @media (max-width: 600px) {
   .showComment {
@@ -837,23 +654,6 @@ h3 {
     padding: 3px 7px;
   }
 }
-.showComment {
-  min-height:80vh ;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  backdrop-filter: blur(5px);
-  border-radius: 10px;
-  padding: 15px;
-  z-index: 1001;  /* Higher than the blur effect */
-  max-height: 80vh;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  visibility: visible;  /* Ensure it's visible */
-}
 
 /* Background Blur Effect */
 .modal-overlay {
@@ -863,16 +663,6 @@ h3 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(5px);
-  z-index: 1;  /* Below the modal */
-  /* display: block; */
-}
-
-/* Mobile Responsive */
-@media (max-width: 600px) {
-  .showComment {
-    max-width: 400px;
-    padding: 10px;
-  }
+  z-index: 1; /* Below the modal */
 }

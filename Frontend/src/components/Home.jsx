@@ -287,9 +287,6 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="details">
-                      {/* card header */}
-
-                      {/* commentSection */}
                       <div className="comment-section">
                         {item.comments.map((comment) => {
                           return (

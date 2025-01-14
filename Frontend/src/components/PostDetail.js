@@ -2,6 +2,9 @@ import React from "react";
 import "./PostDetail.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { IoClose } from "react-icons/io5";
+import { RiDeleteBin6Fill } from "react-icons/ri";
+
 export default function PostDetail({ item, toggleDetails }) {
   const Navigate = useNavigate();
   const notifyERR = (message) => toast.error(message);
@@ -47,7 +50,7 @@ export default function PostDetail({ item, toggleDetails }) {
                 removePost(item._id);
               }}
             >
-              X
+              <RiDeleteBin6Fill />
             </div>
           </div>
           {/* commentSection */}
@@ -102,7 +105,7 @@ export default function PostDetail({ item, toggleDetails }) {
         }}
       >
         <span className="material-symbols-outlined material-symbols-outlined-comment">
-          close
+        <IoClose />
         </span>
       </div>
     </div>

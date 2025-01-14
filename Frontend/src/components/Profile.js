@@ -3,6 +3,7 @@ import PostDetail from "./PostDetail";
 import "./Profile.css";
 import ProfilePic from "./ProfilePic";
 
+
 export default function Profie() {
   var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png"
   const [pic, setPic] = useState([]);
@@ -79,14 +80,15 @@ console.log(user.Photo);
       />
       {/* Gallery */}
       <div className="grid">
-        {pic.map((pics) => {
-          return <div className="box" ><img className="grid__photo item" key={pics._id} src={pics.photo}
-            onClick={() => {
-              toggleDetails(pics)
-            }}
-            ></img></div>
-        })}
+  {pic.map((pics) => {
+    return (
+      <div className="box" key={pics._id} onClick={() => toggleDetails(pics)}>
+        <img className="grid__photo" src={pics.photo} alt="post"/>
       </div>
+    );
+  })}
+</div>
+
       {show &&
         <PostDetail item={posts} toggleDetails={toggleDetails} />
       }

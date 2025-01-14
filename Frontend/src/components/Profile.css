@@ -92,39 +92,50 @@
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
   }
   
   .grid__photo {
-    display: block;
     width: 100%;
-    background: center / cover no-repeat;    
+    height: 100%;
+    object-fit: cover; /* ✅ Makes sure the image fills square properly */
   }
+  
   img.grid__photo{
     object-fit: cover;
     overflow: hidden;
     height: 100%;
   }
   .box{
-    height: 200px;
-      width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    width: 100%;
+  aspect-ratio: 1 / 1;  /* ✅ Forces Square */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 320px) {
     .box {
-      height: 200px;
-      width: 200px; /* Makes gap dynamic based on screen width */
+      height: 106px;
+      width: 106px;
     }
-    .App{margin: 33px 0 0 0!important; }
     .profile-pic>img{
-      width: 120px;
-      height: 120px;
+      width: 90px;
+      height: 90px;
     }
   }
+  @media (max-width: 375px) {
+    .box {
+      height: 125px;
+      width: 125px;
+    }
+    .profile-pic>img{
+      width: 100px;
+      height: 100px;
+    }
+  }
+  
   
   /* Specific breakpoints for fine-tuned control */
   @media (max-width: 425px) {
@@ -138,24 +149,16 @@
     }
   }
   
-  @media (max-width: 375px) {
+
+  @media (max-width: 768px) {
     .box {
-      height: 125px;
-      width: 125px;
+      max-height: 200px;
+      max-width: 200px; /* Makes gap dynamic based on screen width */
     }
+    .App{margin: 33px 0 0 0!important; }
     .profile-pic>img{
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
     }
   }
   
-  @media (max-width: 320px) {
-    .box {
-      height: 106px;
-      width: 106px;
-    }
-    .profile-pic>img{
-      width: 90px;
-      height: 90px;
-    }
-  }
