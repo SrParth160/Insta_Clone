@@ -102,7 +102,30 @@ export default function UserProfie() {
             }}
           >
             <h1>{user.name}</h1>
-            <button
+          
+          </div>
+          <div className="profile-info" style={{ display: "flex" }}>
+          <div className="h2C">
+              <h2 className="h2Count">{posts? posts.length : "0"}</h2>
+              <p> posts</p>
+            </div>
+            <div className="h2C">
+              <h2 className="h2Count">
+                {user.followers ? user.followers.length : "0"}
+              </h2>
+              <p> followers</p>
+            </div>
+            <div className="h2C">
+              <h2 className="h2Count">
+                {user.following ? user.following.length : "0"}
+              </h2>
+              <p> following</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <center><button
               className="followBtn"
               onClick={() => {
                 console.log(user._id);
@@ -115,15 +138,8 @@ export default function UserProfie() {
               }}
             >
               {isFollow ? "Unfollow" : "Follow"}
-            </button>
-          </div>
-          <div className="profile-info" style={{ display: "flex" }}>
-            <p>{posts.length} posts</p>
-            <p>{user.followers ? user.followers.length : "0"} followers</p>
-            <p>{user.following ? user.following.length : "0"} following</p>
-          </div>
-        </div>
-      </div>
+            </button></center>
+      
       <hr
         style={{
           width: "90%",

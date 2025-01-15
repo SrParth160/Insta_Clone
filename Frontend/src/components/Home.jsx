@@ -130,7 +130,7 @@ export default function Home() {
 
   return (
     <div className="home">
-      {data.map( post => {
+      {data.map( (post) => {
         return (
           <div className="col-9">
             <div className="card">
@@ -272,7 +272,6 @@ export default function Home() {
                           <IoMdHeart
                             className="mr-1"
                             style={{ color: "red", fontSize: "16px" }}
-                            onClick={() => unlikePost(post._id)}
                           ></IoMdHeart>{" "}
                           <p className="mt-0" style={{ fontWeight: "bold" }}>
                             {item.likes.length} Likes
@@ -307,7 +306,7 @@ export default function Home() {
 
                       {/* add Comment */}
                       <div className="add-comment">
-                        <span className="material-symbols-outlined">mood</span>
+                      <MdMood style={{fontSize:"22px", cursor:"pointer"}}></MdMood>
                         <input
                           type="text"
                           placeholder="Add a comment"

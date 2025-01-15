@@ -14,6 +14,7 @@ import MyFollowingPost from "./components/MyFollowingPost";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -22,6 +23,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+      <GoogleOAuthProvider clientId="631926972352-sjr36o7ojtd70mqsdvb199j5oppotahq.apps.googleusercontent.com">
         <LoginContext.Provider value={{ userLogin, setUserLogin, modalOpen, setModalOpen }}>
           <Navbar Login={userLogin} />
           <Routes>
@@ -36,6 +38,7 @@ function App() {
           <ToastContainer theme="dark" />
           {modalOpen && <Modal />}
         </LoginContext.Provider>
+        </GoogleOAuthProvider>;
       </div>
     </BrowserRouter>
   );

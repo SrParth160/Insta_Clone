@@ -1,164 +1,195 @@
-.profile{
-    max-width: 600px;
-    margin: 50px auto;
+.M100{
+  margin-top: 30px;
 }
-.profile-pic>img{
-   width: 130px;
-   height: 130px;
+.profile {
+  max-width: 600px;
+  margin: 50px auto;
+}
+.profile-pic > img {
+  width: 130px;
+  height: 130px;
   border-radius: 100px;
   object-fit: cover;
 }
-.profile-frame{
-    display: flex;
-    align-items: center;
-    justify-content:space-evenly;
+.profile-frame {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
-.profile-info p{
-    padding: 5px;
+.profile-info p {
+  padding: 5px;
 }
-.profile-info{
-    display: flex;
+.profile-info {
+  display: flex;
 }
-.gallery{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-.gallery .item{
-    justify-content: left;
-    justify-content: center;
-    display: inline-block;
+.gallery .item {
+  justify-content: left;
+  justify-content: center;
+  display: inline-block;
 }
-.gallery img{
-    width: 30%;
-    margin: 10px;
+.gallery img {
+  width: 30%;
+  margin: 10px;
 }
 .changePic {
-    background-color: #fff;
-    border-radius: 20px;
-  }
-  
-  .changePic div {
-    padding: 15px 80px;
-  }
-  
-  .upload-btn {
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-weight: bolder;
-  
-    font-size: 15px;
-  }
-  .followBtn {
-    cursor: pointer;
-    font-weight: bolder;
-    padding: 13px 25px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    border: none;
-    color: white;
-    background: #0115eb;
-    transition: all 0.25s ease;
-    margin-left: 20px;
-  }
-  
-  .followBtn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 20px -10px #0115eb;
-  }
-  
-  .changePic {
-    background-color: #fff;
-    border-radius: 20px;
-  }
-  
-  .changePic div {
-    padding: 15px 80px;
-  }
-  
-  .upload-btn {
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-weight: bolder;
-  
-    font-size: 15px;
-  }
+  background-color: #fff;
+  border-radius: 20px;
+}
 
-  .pofile-data h1{
-    text-align: left;
-    margin: 5px;
-  }
-  .grid {
-    display: grid;
+.changePic div {
+  padding: 15px 80px;
+}
+
+.upload-btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-weight: bolder;
+
+  font-size: 15px;
+}
+
+.changePic {
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.changePic div {
+  padding: 15px 80px;
+}
+
+.upload-btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-weight: bolder;
+
+  font-size: 15px;
+}
+
+.pofile-data h1 {
+  text-align: left;
+  margin: 5px;
+  margin-top: 50px;
+}
+.grid {
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
-  }
-  
-  .grid__photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* ✅ Makes sure the image fills square properly */
-  }
-  
-  img.grid__photo{
-    object-fit: cover;
-    overflow: hidden;
-    height: 100%;
-  }
-  .box{
-    width: 100%;
-  aspect-ratio: 1 / 1;  /* ✅ Forces Square */
+}
+
+.grid__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ✅ Makes sure the image fills square properly */
+}
+
+img.grid__photo {
+  object-fit: cover;
+  overflow: hidden;
+  height: 100%;
+}
+.box {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* ✅ Forces Square */
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media (max-width: 320px) {
+  .box {
+    height: 106px;
+    width: 106px;
   }
-  @media (max-width: 320px) {
-    .box {
-      height: 106px;
-      width: 106px;
-    }
-    .profile-pic>img{
-      width: 90px;
-      height: 90px;
-    }
+  .profile-pic > img {
+    width: 90px;
+    height: 90px;
   }
-  @media (max-width: 375px) {
-    .box {
-      height: 125px;
-      width: 125px;
-    }
-    .profile-pic>img{
-      width: 100px;
-      height: 100px;
-    }
+}
+@media (max-width: 375px) {
+  .box {
+    height: 125px;
+    width: 125px;
   }
-  
-  
-  /* Specific breakpoints for fine-tuned control */
-  @media (max-width: 425px) {
-    .box {
-      height: 140px;
-      width: 140px;
-    }
-    .profile-pic>img{
-      width: 110px;
-      height: 110px;
-    }
+  .profile-pic > img {
+    width: 100px;
+    height: 100px;
   }
-  
+}
 
-  @media (max-width: 768px) {
-    .box {
-      max-height: 200px;
-      max-width: 200px; /* Makes gap dynamic based on screen width */
-    }
-    .App{margin: 33px 0 0 0!important; }
-    .profile-pic>img{
-      width: 120px;
-      height: 120px;
-    }
+/* Specific breakpoints for fine-tuned control */
+@media (max-width: 425px) {
+  .box {
+    height: 140px;
+    width: 140px;
   }
-  
+  .profile-pic > img {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  .box {
+    max-height: 200px;
+    max-width: 200px; /* Makes gap dynamic based on screen width */
+  }
+  .App {
+    margin: 33px 0 0 0 !important;
+  }
+  .profile-pic > img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.profile h1 {
+  text-align: start;
+  font-size: 21px;
+  font-weight: 700;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.h2Count {
+  font-weight: 600;
+  font-size: 22px;
+  font-weight: 900;
+  font-family: "DM Sans", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: black;
+  margin: 0 30px;
+}
+.h2C p {
+  font-size: 16px;
+  margin-top: -8px;
+  font-family: "DM Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: black;
+}
+.followBtn {
+  display: flex;
+  margin: 15px 25px 0;
+  cursor: pointer;
+  font-weight: bolder;
+  font-family: "DM Sans", serif;
+  padding: 5px 50px;
+  border-radius: 6px;
+  font-size: 16px;
+  border: none;
+  color: white;
+  background: #3344ff;
+  transition: all 0.25s ease;
+}
+.followBtn:hover {
+  transform: scale(1.1);
+}

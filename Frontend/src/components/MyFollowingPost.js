@@ -318,7 +318,7 @@ export default function MyFolliwngPost() {
 
                       {/* add Comment */}
                       <div className="add-comment">
-                        <span className="material-symbols-outlined">mood</span>
+                        <MdMood style={{fontSize:"22px", cursor:"pointer"}}></MdMood>
                         <input
                           type="text"
                           placeholder="Add a comment"
