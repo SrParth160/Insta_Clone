@@ -24,7 +24,7 @@ export default function ProfilePic({ changeprofile }) {
 
   const postPic = () => {
     // saving post to mongodb
-    fetch("http://localhost:5000/uploadProfilePic", {
+    fetch("https://insta-clone-dahi.onrender.com/uploadProfilePic", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,6 @@ export default function ProfilePic({ changeprofile }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         changeprofile();
         window.location.reload();
       })

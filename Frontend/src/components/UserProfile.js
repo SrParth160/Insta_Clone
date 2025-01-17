@@ -23,7 +23,7 @@ export default function UserProfie() {
 
   // to follow user
   const followUser = (_id) => {
-    fetch("http://localhost:5000/follow", {
+    fetch("https://insta-clone-dahi.onrender.com/follow", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -35,14 +35,13 @@ export default function UserProfie() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setIsFollow(true);
       });
   };
 
   // to unfollow user
   const unfollowUser = (_id) => {
-    fetch("http://localhost:5000/unfollow", {
+    fetch("https://insta-clone-dahi.onrender.com/unfollow", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -56,13 +55,12 @@ export default function UserProfie() {
         res.json();
       })
       .then((data) => {
-        console.log(data);
         setIsFollow(false);
       });
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${_id}`, {
+    fetch(`https://insta-clone-dahi.onrender.com/user/${_id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -128,7 +126,6 @@ export default function UserProfie() {
       <center><button
               className="followBtn"
               onClick={() => {
-                console.log(user._id);
                 if (isFollow) {
                   unfollowUser(user._id);
                 } else {

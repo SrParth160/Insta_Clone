@@ -20,8 +20,6 @@ export default function Home() {
   const notifyERR = (message) => toast.error(message);
   const notifySUC = (message) => toast.success(message);
 
-  // console.log(data);
-
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (!token) {
@@ -29,7 +27,7 @@ export default function Home() {
     }
 
     // fatch posts
-    fetch("http://localhost:5000/api/post/allposts", {
+    fetch("https://insta-clone-dahi.onrender.com/api/post/allposts", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -40,7 +38,7 @@ export default function Home() {
   }, []);
 
   const likePost = (id) => {
-    fetch("http://localhost:5000/api/post/like", {
+    fetch("https://insta-clone-dahi.onrender.com/api/post/like", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +61,7 @@ export default function Home() {
       });
   };
   const unlikePost = (id) => {
-    fetch("http://localhost:5000/api/post/unlike", {
+    fetch("https://insta-clone-dahi.onrender.com/api/post/unlike", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -83,12 +81,11 @@ export default function Home() {
           }
         });
         setData(newData);
-        // console.log(result);
       });
   };
 
   const makeComment = (text, id) => {
-    fetch("http://localhost:5000/api/post/comment", {
+    fetch("https://insta-clone-dahi.onrender.com/api/post/comment", {
       method: "put",
       headers: {
         "Content-Type": "application/json",

@@ -29,7 +29,7 @@ export default function Login() {
     //   return;
     // }
 
-    fetch("http://localhost:5000/api/user/login", {
+    fetch("https://insta-clone-dahi.onrender.com/api/user/login", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +45,6 @@ export default function Login() {
           notifyERR(data.error);
         } else {
           notifySUC("Login successful");
-          console.log(data.token);
           localStorage.setItem("jwt", data.token);
           localStorage.setItem("user", JSON.stringify(data.data));
           

@@ -17,7 +17,7 @@ export default function CreatePost() {
   useEffect(() => {
     // saving post to mongodb
     if (url) {
-      fetch("http://localhost:5000/api/post/createPost", {
+      fetch("https://insta-clone-dahi.onrender.com/api/post/createPost", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +45,6 @@ export default function CreatePost() {
   // posting image to cloudinary
 
   const postDetails = () => {
-    console.log(body, image);
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "insta-clone");

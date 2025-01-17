@@ -28,7 +28,7 @@ export default function MyFolliwngPost() {
     }
 
     // Fetching all posts
-    fetch("http://localhost:5000/api/post/myfollowingpost", {
+    fetch("https://insta-clone-dahi.onrender.com/api/post/myfollowingpost", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -51,7 +51,7 @@ export default function MyFolliwngPost() {
   };
 
   const likePost = (id) => {
-    fetch("http://localhost:5000/api/post/like", {
+    fetch("https://insta-clone-dahi.onrender.com/api/post/like", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -71,11 +71,10 @@ export default function MyFolliwngPost() {
           }
         });
         setData(newData);
-        console.log(result);
       });
   };
   const unlikePost = (id) => {
-    fetch("http://localhost:5000/api/post/unlike", {
+    fetch("https://insta-clone-dahi.onrender.com/api/post/unlike", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -95,7 +94,6 @@ export default function MyFolliwngPost() {
           }
         });
         setData(newData);
-        console.log(result);
       });
   };
 
@@ -103,7 +101,7 @@ export default function MyFolliwngPost() {
 
   // function to make comment
   const makeComment = (text, id) => {
-    fetch("http://localhost:5000/api/post/comment", {
+    fetch("https://insta-clone-dahi.onrender.com/api/post/comment", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -126,7 +124,6 @@ export default function MyFolliwngPost() {
         setData(newData);
         setComment("");
         notifyB("Comment posted");
-        console.log(result);
       });
   };
 

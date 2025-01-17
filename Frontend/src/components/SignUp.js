@@ -30,7 +30,7 @@ export default function SignUp() {
     const jwtDetail = jwtDecode(credentialResponse.credential);
     console.log("Decoded JWT:", jwtDetail);
   
-    fetch("http://localhost:5000/api/user/googleLogin", {
+    fetch("https://insta-clone-dahi.onrender.com/api/user/googleLogin", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +77,7 @@ export default function SignUp() {
     //   return;
     // }
 
-    fetch("http://localhost:5000/api/user/signup", {
+    fetch("https://insta-clone-dahi.onrender.com/api/user/signup", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +97,6 @@ export default function SignUp() {
           notifySUC(data.message);
           Navigate("/login");
         }
-        console.log(data);
       });
   };
 

@@ -13,7 +13,7 @@ export default function PostDetail({ item, toggleDetails }) {
   const notifySUC = (message) => toast.success(message);
   const removePost = (postId) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
-      fetch(`http://localhost:5000/api/post/deletePost/${postId}`, {
+      fetch(`https://insta-clone-dahi.onrender.com/api/post/deletePost/${postId}`, {
         method: "delete",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -23,7 +23,6 @@ export default function PostDetail({ item, toggleDetails }) {
         .then((result) => {
           notifySUC("Deleted successful");
           Navigate("/Home");
-          console.log(result);
         });
     }
   };
