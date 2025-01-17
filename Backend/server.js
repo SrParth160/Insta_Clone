@@ -9,10 +9,7 @@ const uRoutes = require("./routes/user")
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
-app.use(cors({
-  origin: ['http://localhost:3000'].filter(Boolean),
-  credentials: true
-}));
+app.use(cors());
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 5000;
 
