@@ -35,7 +35,6 @@ export default function MyFolliwngPost() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         setData(result);
       })
       .catch((err) => console.log(err));
@@ -136,7 +135,7 @@ export default function MyFolliwngPost() {
       {/* card */}
       {data.map((posts) => {
         return (
-          <div className="col-9">
+          <div key={posts} className="col-9">
             <div className="card">
               {/* Post Header */}
               <div className="top">
@@ -230,7 +229,7 @@ export default function MyFolliwngPost() {
                                 <MdMood style={{fontSize:"22px", cursor:"pointer"}}></MdMood>
                 
                   <input
-                    class=" text"
+                    className=" text"
                     type="text"
                     placeholder="Add Comment"
                     value={comment}

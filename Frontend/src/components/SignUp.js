@@ -57,9 +57,9 @@ export default function SignUp() {
           localStorage.setItem("user", JSON.stringify(data.user));
   
           setUserLogin(true);
-          Navigate("/Home");
+          Navigate("/");
           setTimeout(() => {
-            window.location.href = "/Home"; // ✅ Fallback if Navigate() fails
+            window.location.href = "/"; // ✅ Fallback if Navigate() fails
           }, 500);
         }
       })

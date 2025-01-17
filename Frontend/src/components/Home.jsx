@@ -16,8 +16,6 @@ export default function Home() {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState([]);
 
-  console.log(data);
-
   // Toast functions
   const notifyERR = (message) => toast.error(message);
   const notifySUC = (message) => toast.success(message);
@@ -62,7 +60,6 @@ export default function Home() {
           }
         });
         setData(newData);
-        console.log(newData);
       });
   };
   const unlikePost = (id) => {
@@ -114,7 +111,6 @@ export default function Home() {
         setData(newData);
         setComment("");
         notifySUC("Comment posted");
-        console.log(result);
       });
   };
   // show comment
@@ -132,7 +128,7 @@ export default function Home() {
     <div className="home">
       {data.map( (post) => {
         return (
-          <div className="col-9">
+          <div key={post} className="col-9">
             <div className="card">
               {/* Post Header */}
               <div className="top">
@@ -222,7 +218,7 @@ export default function Home() {
                 <MdMood style={{fontSize:"22px", cursor:"pointer"}}></MdMood>
 
                   <input
-                    class=" text"
+                    className=" text"
                     type="text"
                     placeholder="Add Comment"
                     value={comment}

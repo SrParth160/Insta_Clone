@@ -50,7 +50,7 @@ export default function Login() {
           localStorage.setItem("user", JSON.stringify(data.data));
           
           setUserLogin(true);
-          Navigate("/Home");
+          Navigate("/");
         }
         console.log(data);
       });

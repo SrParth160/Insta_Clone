@@ -79,7 +79,7 @@ export default function CreatePost() {
         </>
         <>
           <button
-            class="card__btn"
+            className="card__btn"
             id="post-btn"
             onClick={() => {
               postDetails();
@@ -107,26 +107,26 @@ export default function CreatePost() {
           />
         </div>
         {/* details  */}
-        <footer class="card__footer">
-          <div class="card__job-summary">
-            <div class="card__job-icon card-pic">
+        <footer className="card__footer">
+          <div className="card__job-summary">
+            <div className="card__job-icon card-pic">
               <img
                 src={JSON.parse(localStorage.getItem("user")).Photo}
                 alt=""
               />
             </div>
-            <div class="card__job">
-              <p class="card__job-title">
+            <div className="card__job">
+              <p className="card__job-title">
                 {JSON.parse(localStorage.getItem("user")).name}
                 
               </p>
             </div>
           </div>
         </footer>
-        <div class="container_chat_bot">
-          <div class="container-chat-options">
-            <div class="chat">
-              <div class="chat-bot">
+        <div className="container_chat_bot">
+          <div className="container-chat-options">
+            <div className="chat">
+              <div className="chat-bot">
                 <textarea
                   value={body}
                   onChange={(e) => setBody(e.target.value)}

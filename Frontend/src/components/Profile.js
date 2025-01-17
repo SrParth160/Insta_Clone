@@ -43,11 +43,8 @@ export default function Profie() {
       .then((result) => {
         setPic(result.post);
         setUser(result.user);
-        console.log(result);
       });
   }, []);
-
-  console.log(user.Photo);
 
   return (
     <div className="profile" style={{ marginTop: "40px" }}>

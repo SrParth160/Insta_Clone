@@ -63,7 +63,7 @@ export default function Navbar({ login }) {
       {/* Desktop Navbar */}
       <nav className="navbar desktop-navbar">
         <div className="navbar-container">
-          <Link to="/Home" className="navbar-logo">
+          <Link to="/" className="navbar-logo">
             <img src={logo} alt="Logo" className="logo" />
           </Link>
           <ul className="navbar-links">{loginStatus()}</ul>
@@ -72,7 +72,7 @@ export default function Navbar({ login }) {
 
       {/* Mobile Top Navbar (Only Logo and Logout) */}
       <nav className="navbar mobile-top-navbar">
-        <Link to="/Home" className="navbar-logo">
+        <Link to="/" className="navbar-logo">
           <img src={logo} alt="Logo" className="logo" />
         </Link>
         <button className="logout-btn" onClick={() => setModalOpen(true)}>
@@ -84,7 +84,7 @@ export default function Navbar({ login }) {
       <nav className="navbar mobile-navbar">
         <ul className="navbar-links">
           <li>
-            <Link to="/Home" className="navbar-link">
+            <Link to="/" className="navbar-link">
               <span className="mobile-icon material-icons">home</span>
             </Link>
           </li>
