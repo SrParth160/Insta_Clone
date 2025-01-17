@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 var cookieParser = require("cookie-parser");
 const { verifyToken, createToken } = require("../middlewares/auth");
 const USER = require("../models/userModel");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const JWT_ = process.env.JWT_SECRET;
 
 exports.signup = async (req, res) => {
