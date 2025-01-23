@@ -84,12 +84,14 @@ export default function UserProfie() {
 
   return (
     <div className="profile">
+    <div className="profile-back">
       {/* Profile frame */}
-      <div className="profile-frame">
-        {/* profile-pic */}
-        <div className="profile-pic">
+      <div className="profile-pic">
           <img src={user.Photo ? user.Photo : picLink} alt="" />
         </div>
+      <div className="profile-frame">
+        {/* profile-pic */}
+        
         {/* profile-data */}
         <div className="pofile-data">
           <div
@@ -137,14 +139,8 @@ export default function UserProfie() {
               {isFollow ? "Unfollow" : "Follow"}
             </button></center>
       
-      <hr
-        style={{
-          width: "90%",
-
-          opacity: "0.8",
-          margin: "25px auto",
-        }}
-      />
+     
+      </div>
       {/* Gallery */}
       <div className="grid">
         {posts.map((pics) => {
@@ -157,7 +153,7 @@ export default function UserProfie() {
               alt="post"/>
       </div>
            
-          );
+          )
         })}
       </div>
        

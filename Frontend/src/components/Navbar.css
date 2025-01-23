@@ -52,7 +52,7 @@ body {
 /* Use viewport width-based scaling */
 @media (max-width: 768px) {
   .navbar-links {
-    gap: 80px; /* Makes gap dynamic based on screen width */
+    gap: 65px; /* Makes gap dynamic based on screen width */
   }
   .App{margin: 33px 0 0 0!important; }
 }

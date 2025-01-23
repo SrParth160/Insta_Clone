@@ -1,15 +1,22 @@
-.M100{
+.App{
+  background-color: #F0F4F7;
+ }
+ .M100{
   margin-top: 30px;
 }
 .profile {
   max-width: 600px;
   margin: 50px auto;
+  text-align: center;
+  
 }
 .profile-pic > img {
   width: 130px;
   height: 130px;
   border-radius: 100px;
   object-fit: cover;
+  margin: 0 auto;
+  
 }
 .profile-frame {
   display: flex;
@@ -138,10 +145,11 @@ img.grid__photo {
 @media (max-width: 768px) {
   .box {
     max-height: 200px;
-    max-width: 200px; /* Makes gap dynamic based on screen width */
+    max-width: 200px;
+    border-radius: 10px; /* Makes gap dynamic based on screen width */
   }
   .App {
-    margin: 33px 0 0 0 !important;
+    margin:0  !important;
   }
   .profile-pic > img {
     width: 120px;
@@ -152,9 +160,9 @@ img.grid__photo {
 .profile h1 {
   text-align: start;
   font-size: 21px;
-  font-weight: 700;
-  margin-left: 20px;
+  font-weight: 600;
   margin-bottom: 10px;
+  margin: 20px auto;
 }
 
 .h2Count {
@@ -167,6 +175,9 @@ img.grid__photo {
   color: black;
   margin: 0 30px;
 }
+.h2C{
+  margin: 0 25px;
+}
 .h2C p {
   font-size: 16px;
   margin-top: -8px;
@@ -174,9 +185,9 @@ img.grid__photo {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  color: black;
+  color: rgb(71, 71, 71);
 }
-.followBtn {
+/* .followBtn {
   display: flex;
   margin: 15px 25px 0;
   cursor: pointer;
@@ -190,6 +201,36 @@ img.grid__photo {
   background: #3344ff;
   transition: all 0.25s ease;
 }
+
 .followBtn:hover {
   transform: scale(1.1);
-}
+} */
+
+.followBtn {background-image: linear-gradient(to right, #F20D81 0%, #9a13ac  51%, #ac0588  100%)}
+.followBtn {
+   margin: 10px;
+   font-weight: 600;
+   padding: 12px 50px;
+   text-align: center;
+   text-transform: capitalize;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 50px;
+   display: block;
+ }
+
+ .followBtn:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+ .profile-back{
+  padding: 30px 0 10px 0;
+  margin-bottom: 40px;
+  box-shadow: 0px 10px 12px 9px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  background-color: #fff;
+ }

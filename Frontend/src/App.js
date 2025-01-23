@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "./App.css";
 import Home from "./components/Home";
@@ -23,24 +23,21 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <GoogleOAuthProvider clientId="631926972352-sjr36o7ojtd70mqsdvb199j5oppotahq.apps.googleusercontent.com">
-          <LoginContext.Provider value={{ userLogin, setUserLogin, modalOpen, setModalOpen }}>
-            <Navbar Login={userLogin} />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/login" element={<LogIn />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/createpost" element={<CreatePost />} />
-              <Route path="/profile/:_id" element={<UserProfile />} />
-              <Route path="/myfollowingpost" element={<MyFollowingPost />} />
-
-              {/* Catch-All Route */}
-              <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
-            <ToastContainer theme="dark" />
-            {modalOpen && <Modal />}
-          </LoginContext.Provider>
+      <GoogleOAuthProvider clientId="631926972352-sjr36o7ojtd70mqsdvb199j5oppotahq.apps.googleusercontent.com">
+        <LoginContext.Provider value={{ userLogin, setUserLogin, modalOpen, setModalOpen }}>
+          <Navbar Login={userLogin} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<LogIn />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/createpost" element={<CreatePost />} />
+            <Route path="/profile/:_id" element={<UserProfile />} />
+            <Route path="/myfollowingpost" element={<MyFollowingPost />} />
+          </Routes>
+          <ToastContainer theme="dark" />
+          {modalOpen && <Modal />}
+        </LoginContext.Provider>
         </GoogleOAuthProvider>
       </div>
     </BrowserRouter>
