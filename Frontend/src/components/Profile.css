@@ -1,8 +1,14 @@
 .App{
   background-color: #F0F4F7;
  }
- .M100{
-  margin-top: 30px;
+
+ .profile-frame h2.M100{
+  text-align: center;
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin: 20px auto;
+  
 }
 .profile {
   max-width: 600px;
@@ -19,15 +25,16 @@
   
 }
 .profile-frame {
-  display: flex;
+  /* display: flex; */
   align-items: center;
-  justify-content: space-evenly;
+  margin: 0 auto;
 }
 .profile-info p {
   padding: 5px;
 }
 .profile-info {
   display: flex;
+  justify-content: center;
 }
 .gallery {
   display: flex;
@@ -79,11 +86,7 @@
   font-size: 15px;
 }
 
-.pofile-data h1 {
-  text-align: left;
-  margin: 5px;
-  margin-top: 50px;
-}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -233,4 +236,6 @@ img.grid__photo {
   box-shadow: 0px 10px 12px 9px rgba(0,0,0,0.1);
   border-radius: 20px;
   background-color: #fff;
+  margin: 0 auto;
+  margin-bottom: 40px;
  }

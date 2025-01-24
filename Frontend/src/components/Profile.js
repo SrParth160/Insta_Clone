@@ -48,9 +48,8 @@ export default function Profie() {
 
   return (
     <div className="profile" style={{ marginTop: "40px" }}>
-      {/* Profile frame */}
-      <h1 className="M100">{JSON.parse(localStorage.getItem("user")).name}</h1>
-
+    {/* Profile frame */}
+    <div className="profile-back">
       <div className="profile-frame">
         {/* profile-pic */}
         <div className="profile-pic">
@@ -59,6 +58,9 @@ export default function Profie() {
             src={user.Photo ? user.Photo : picLink}
           />
         </div>
+        <center>
+      <h2 className="M100">{JSON.parse(localStorage.getItem("user")).name}</h2>
+</center>
         {/* profile-data */}
         <div className="pofile-data">
           <div className="profile-info" style={{ display: "flex" }}>
@@ -81,14 +83,9 @@ export default function Profie() {
           </div>
         </div>
       </div>
-      <hr
-        style={{
-          width: "90%",
+      </div>
+    
 
-          opacity: "0.8",
-          margin: "25px auto",
-        }}
-      />
       {/* Gallery */}
       <div className="grid">
         {pic.map((pics) => {
