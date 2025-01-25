@@ -66,6 +66,7 @@
 
 .home {
   margin: 45px 0 0 0;
+  background-color: #F4F8FB;
 }
 
 .userDetails h3 {
@@ -411,7 +412,7 @@ h3 {
 }
 
 .imgBx img {
-  width: 100%;
+  width: 39rem;
   height: auto;
   object-fit: cover;
 }
@@ -653,6 +654,10 @@ h3 {
     font-size: 12px;
     padding: 3px 7px;
   }
+
+  .imgBx img {
+    width: 32rem;
+  }
 }
 
 /* Background Blur Effect */
@@ -666,3 +671,54 @@ h3 {
   backdrop-filter: blur(5px);
   z-index: 1; /* Below the modal */
 }
+
+/* Container for the post image */
+.imgBx {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Prevent content from spilling out */
+  cursor: pointer;
+}
+
+/* Post Image */
+.post-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Maintain image aspect ratio */
+  transition: transform 0.2s ease; /* Smooth hover effect */
+}
+
+.imgBx:hover .post-image {
+  transform: scale(1.02); /* Slight zoom on hover */
+}
+
+
+/* Heart Animation */
+.heart-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px; /* Default heart size */
+  color: red;
+  opacity: 0;
+  animation: heart-pop 0.6s ease-out forwards;
+  pointer-events: none; /* Ignore user interactions */
+}
+
+/* Heart Animation Keyframes */
+@keyframes heart-pop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+

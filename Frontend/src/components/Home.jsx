@@ -15,6 +15,25 @@ export default function Home() {
   const [comment, setComment] = useState("");
   const [show, setShow] = useState(false);
   const [item, setItem] = useState([]);
+  const [heartAnimationPostId, setHeartAnimationPostId] = useState(null);
+
+const handleDoubleClick = (post) => {
+  const userId = JSON.parse(localStorage.getItem("user"))._id;
+
+  if (post.likes.includes(userId)) {
+    unlikePost(post._id); // Unlike if already liked
+  } else {
+    likePost(post._id); // Like the post
+  }
+
+  // Trigger animation for the specific post
+  setHeartAnimationPostId(post._id);
+
+  // Automatically hide animation after 1 second
+  setTimeout(() => {
+    setHeartAnimationPostId(null);
+  }, 1000);
+};
 
   // Toast functions
   const notifyERR = (message) => toast.error(message);
@@ -156,12 +175,20 @@ export default function Home() {
               </div>
 
               {/* Post Image */}
-              <div className="imgBx">
-                <img
-                  src={post.photo ? post.photo : "corrupt image"}
-                  alt="Post"
-                />
-              </div>
+              <div className="imgBx" onDoubleClick={() => handleDoubleClick(post)}>
+  <img
+    src={post.photo ? post.photo : "corrupt image"}
+    alt="Post"
+    className="post-image"
+  />
+
+  {heartAnimationPostId === post._id && (
+    <div className="heart-animation">
+      <IoMdHeart style={{ color: "red", fontSize: "100px" }} />
+    </div>
+  )}
+</div>
+
 
               {/* Post Actions */}
               <div className="bottom">

@@ -31,7 +31,9 @@ export default function Navbar({ login }) {
             </Link>
           </li>
           <li>
-            <button className="nav-item logout-btn" onClick={() => setModalOpen(true)}>
+            <button
+              className="nav-item logout-btn"
+              onClick={() => setModalOpen(true)}>
               <span className="desktop-text">Logout</span>
               <span className="mobile-icon material-icons">logout</span>
             </button>
