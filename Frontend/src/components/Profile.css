@@ -153,6 +153,9 @@ img.grid__photo {
   }
   .App {
     margin:0  !important;
+    width: 100% !important ; 
+    padding: 5px ;
+    
   }
   .profile-pic > img {
     width: 120px;
